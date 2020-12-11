@@ -57,7 +57,6 @@ export default {
   watch: {},
   methods: {
     formatter(row) {
-      let a;
       let text = '';
       row.city.map(item => {
         text = text + CodeToText[item];
@@ -113,4 +112,4 @@ export default {
   activated() {},
 };
 </script>
-<style scoped></style>
+<style scoped lang="scss"></style>
