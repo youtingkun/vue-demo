@@ -24,7 +24,8 @@
 			:addressItem="addressItem"
 			@cancel="dialogCancel"
 			@submit="dialogSubmit"
-		></address-dialog>
+		>
+		</address-dialog>
 	</div>
 </template>
 
