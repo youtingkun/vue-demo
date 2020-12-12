@@ -29,9 +29,8 @@ Vue.use(ElementUI);
 Vue.use(YTKVueComponents);
 
 new Vue({
-	el: '#app',
 	i18n,
 	router,
 	store,
 	render: h => h(App),
-});
+}).$mount('#app');
