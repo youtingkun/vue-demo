@@ -1,11 +1,11 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import addressStore from './addressStore'
+import Vue from 'vue';
+import Vuex from 'vuex';
+import addressStore from './addressStore';
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export default new Vuex.Store({
-  modules:{
-    addressStore
-  }
-})
+	modules: {
+		addressStore,
+	},
+});

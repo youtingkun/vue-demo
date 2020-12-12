@@ -3,14 +3,11 @@
 		<div>{{ $t('hello') }}</div>
 		<div>{{ $t('name', ['小王']) }}</div>
 		<div>{{ i18nHello }}</div>
+		<ytk-button></ytk-button>
 		<el-table :data="addressList">
 			<el-table-column prop="name" label="收货人"></el-table-column>
 			<el-table-column prop="phone" label="手机号码"></el-table-column>
-			<el-table-column
-				prop="city"
-				:formatter="formatter"
-				label="区域信息"
-			></el-table-column>
+			<el-table-column prop="city" :formatter="formatter" label="区域信息"></el-table-column>
 			<el-table-column prop="address" label="详细地址"></el-table-column>
 			<el-table-column prop="post" label="邮政编码"></el-table-column>
 			<el-table-column>

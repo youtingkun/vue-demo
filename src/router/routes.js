@@ -1,14 +1,12 @@
-const Address = ()=> import('@/views/address/address.vue')
+const Address = () => import('@/views/address/address.vue');
 
 const routes = [
-  {
-    path: '/address',
-    name: 'address',
-    meta: {
-    },
-    component: Address
-  }
-  
-]
+	{
+		path: '/address',
+		name: 'address',
+		meta: {},
+		component: Address,
+	},
+];
 
-export default routes
+export default routes;
