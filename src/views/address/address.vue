@@ -2,10 +2,11 @@
 	<div class="">
 		<div>{{ $t('hello') }}</div>
 		<div>{{ $t('name', ['小王']) }}</div>
-		<div>{{ i18nHello }}</div>
+		<div style="width: 240px; height: 300px">{{ i18nHello }}</div>
 		<ytk-button></ytk-button>
-		<el-table :data="addressList">
-			<el-table-column prop="name" label="收货人"></el-table-column>
+
+		<el-table :data="addressList" class="">
+			<el-table-column prop="name" label="收货人"> </el-table-column>
 			<el-table-column prop="phone" label="手机号码"></el-table-column>
 			<el-table-column prop="city" :formatter="formatter" label="区域信息"></el-table-column>
 			<el-table-column prop="address" label="详细地址"></el-table-column>
@@ -43,6 +44,7 @@ export default {
 			dialogType: '',
 			addressItem: {},
 			i18nHello: this.$t('hello'),
+			input: 0,
 		};
 	},
 	computed: {
@@ -117,4 +119,8 @@ export default {
 	activated() {},
 };
 </script>
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.a {
+	background-attachment: fixed;
+}
+</style>

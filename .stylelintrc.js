@@ -1,6 +1,6 @@
 module.exports = {
     defaultSeverity: 'error',
-    extends: ['stylelint-config-standard'],
+    extends: ['stylelint-config-standard', 'stylelint-prettier/recommended'],
     plugins: ['stylelint-scss'],
     rules: {
       'declaration-colon-newline-after': null,
