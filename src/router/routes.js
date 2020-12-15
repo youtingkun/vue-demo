@@ -15,7 +15,10 @@ const routes = [
 	{
 		path: '/address',
 		name: 'address',
-		meta: {},
+		meta: {
+			title: '地址编辑',
+			icon: 'nested',
+		},
 		component: Address,
 	},
 	nested,

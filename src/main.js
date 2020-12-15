@@ -7,8 +7,11 @@ import 'ytk-vue-components/lib/ytk-vue-components.css';
 import router from './router';
 import store from './store';
 import VueI18n from 'vue-i18n';
+import '@/styles/index.scss'; // global css
+import SvgIcon from '@/components/svg-icon';
 
 Vue.use(VueI18n);
+Vue.component('svg-icon', SvgIcon);
 
 const i18n = new VueI18n({
 	locale: 'en', // 语言标识

@@ -1,13 +1,16 @@
 <template>
 	<div class="">
+		<sidebar class="sidebar-container" />
 		<router-view :key="key" />
 	</div>
 </template>
 
 <script>
+import Sidebar from './sidebar/index';
+
 export default {
 	name: '',
-	components: {},
+	components: { Sidebar },
 	props: {},
 	data() {
 		return {};

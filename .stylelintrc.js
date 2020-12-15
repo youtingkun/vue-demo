@@ -14,5 +14,8 @@ module.exports = {
 		'selector-pseudo-class-no-unknown': null,
 		'scss/at-rule-no-unknown': true,
 		'property-no-unknown': null,
+		'no-descending-specificity': null,
 	},
 };
+
+// null设置为关闭某些规则的验证
