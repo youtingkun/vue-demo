@@ -6,7 +6,7 @@ const nested = {
 	redirect: '/nested/menu1',
 	name: 'Nested',
 	meta: {
-		title: 'Nested',
+		title: '多层菜单',
 		icon: 'el-icon-share',
 	},
 	children: [
