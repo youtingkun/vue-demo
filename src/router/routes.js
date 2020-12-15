@@ -1,3 +1,4 @@
+import nested from './nested.js';
 const Address = () => import('@/views/address/address.vue');
 
 const routes = [
@@ -17,6 +18,7 @@ const routes = [
 		meta: {},
 		component: Address,
 	},
+	nested,
 ];
 
 export default routes;
