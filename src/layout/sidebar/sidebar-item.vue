@@ -32,6 +32,7 @@ import { isExternal } from '@/utils/validate';
 export default {
 	name: 'sidebar-item',
 	components: { Item, AppLink },
+	mixins: [],
 	props: {
 		// route object
 		item: {
