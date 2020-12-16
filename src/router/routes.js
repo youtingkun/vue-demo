@@ -1,5 +1,6 @@
 import Layout from '@/layout';
 import nested from './modules/nested.js';
+import table from './modules/table.js';
 
 export const constantRoutes = [
 	{
@@ -57,6 +58,7 @@ export const asyncRoutes = [
 		],
 	},
 	nested,
+	table,
 	{ path: '*', redirect: '/404', hidden: true },
 ];
 
