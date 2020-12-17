@@ -59,6 +59,20 @@ export const asyncRoutes = [
 	},
 	nested,
 	table,
+	{
+		path: '/custom-directives',
+		component: Layout,
+		children: [
+			{
+				path: 'index',
+				name: 'custom-directives',
+				meta: {
+					title: 'vue自定义指令',
+				},
+				component: () => import('@/views/custom-directives/index.vue'),
+			},
+		],
+	},
 	{ path: '*', redirect: '/404', hidden: true },
 ];
 

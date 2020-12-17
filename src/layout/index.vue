@@ -2,6 +2,7 @@
 	<div :class="classObj" class="app-wrapper">
 		<sidebar class="sidebar-container" />
 		<div class="main-container">
+			<navbar />
 			<app-main />
 		</div>
 	</div>
@@ -10,10 +11,11 @@
 <script>
 import Sidebar from './sidebar/index';
 import AppMain from './app-main';
+import Navbar from './navbar';
 
 export default {
 	name: '',
-	components: { Sidebar, AppMain },
+	components: { Sidebar, AppMain, Navbar },
 	props: {},
 	data() {
 		return {};
