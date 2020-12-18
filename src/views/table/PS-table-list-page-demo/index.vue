@@ -1,43 +1,47 @@
 <template>
 	<div>
-		<el-form ref="searchForm" :inline="true" :model="searchForm">
-			<el-form-item label="公司名">
-				<el-input v-model="searchForm.name" placeholder="请输入" />
-			</el-form-item>
-			<el-form-item label="时间" prop="time">
-				<el-date-picker v-model="searchForm.time" type="daterange" value-format="yyyy-MM-dd" placeholder="请选择" />
-			</el-form-item>
-			<el-button type="primary" icon="el-icon-search" @click="handleSearch">搜索</el-button>
-			<el-button type="primary" icon="el-icon-refresh-right" @click="handleReset('searchForm')">重置</el-button>
-		</el-form>
-		<el-button type="primary" icon="el-icon-plus" @click="handleCreate">新增</el-button>
-		<el-table :data="tableData" style="width: 100%">
-			<el-table-column prop="date" label="日期" width="180" />
-			<el-table-column prop="name" label="姓名" width="180" />
-			<el-table-column prop="address" label="地址" />
-			<el-table-column fixed="right" label="操作" width="250">
-				<template slot-scope="scope">
-					<el-button type="text" size="small" @click="handleRead(scope.row)">查看</el-button>
-					<el-button type="text" size="small" @click="handleDelete(scope.row)">删除</el-button>
-					<el-button type="text" size="small" @click="handleUpdate(scope.row)">编辑</el-button>
-					<el-button type="text" size="small" @click="handleDisable(scope.row)">禁用</el-button>
-					<el-button type="text" size="small" @click="handleEnable(scope.row)">启用</el-button>
-				</template>
-			</el-table-column>
-		</el-table>
-		<div class="pagination">
-			<el-pagination
-				background
-				:current-page.sync="page.currentPage"
-				:page-sizes="[10, 20, 50, 100]"
-				:page-size="page.pageSize"
-				layout="total, sizes, prev, pager, next, jumper"
-				:pager-count="5"
-				:total="page.total"
-				@size-change="handleSizeChange"
-				@current-change="handleCurrentChange"
-			/>
-		</div>
+		<el-card shadow="never">
+			<el-form ref="searchForm" :inline="true" :model="searchForm">
+				<el-form-item label="公司名">
+					<el-input v-model="searchForm.name" placeholder="请输入" />
+				</el-form-item>
+				<el-form-item label="时间" prop="time">
+					<el-date-picker v-model="searchForm.time" type="daterange" value-format="yyyy-MM-dd" placeholder="请选择" />
+				</el-form-item>
+				<el-button type="primary" icon="el-icon-search" @click="handleSearch">搜索</el-button>
+				<el-button type="primary" icon="el-icon-refresh-right" @click="handleReset('searchForm')">重置</el-button>
+			</el-form>
+		</el-card>
+		<el-card shadow="never" style="margin-top: 30px">
+			<div slot="header"><el-button type="primary" icon="el-icon-plus" @click="handleCreate">新增</el-button></div>
+			<el-table :data="tableData" style="width: 100%; margin-top: 30px">
+				<el-table-column prop="date" label="日期" width="180" />
+				<el-table-column prop="name" label="姓名" width="180" />
+				<el-table-column prop="address" label="地址" />
+				<el-table-column fixed="right" label="操作" width="250">
+					<template slot-scope="scope">
+						<el-button type="text" size="small" @click="handleRead(scope.row)">查看</el-button>
+						<el-button type="text" size="small" @click="handleDelete(scope.row)">删除</el-button>
+						<el-button type="text" size="small" @click="handleUpdate(scope.row)">编辑</el-button>
+						<el-button type="text" size="small" @click="handleDisable(scope.row)">禁用</el-button>
+						<el-button type="text" size="small" @click="handleEnable(scope.row)">启用</el-button>
+					</template>
+				</el-table-column>
+			</el-table>
+			<div class="pagination">
+				<el-pagination
+					background
+					:current-page.sync="page.currentPage"
+					:page-sizes="[10, 20, 50, 100]"
+					:page-size="page.pageSize"
+					layout="total, sizes, prev, pager, next, jumper"
+					:pager-count="5"
+					:total="page.total"
+					@size-change="handleSizeChange"
+					@current-change="handleCurrentChange"
+				/>
+			</div>
+		</el-card>
 		<detail ref="detail" @getList="getTableData()" />
 	</div>
 </template>
@@ -186,6 +190,7 @@ export default {
 
 <style scoped lang="scss">
 .pagination {
+	margin-top: 30px;
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-end;

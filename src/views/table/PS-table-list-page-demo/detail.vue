@@ -1,5 +1,5 @@
 <template>
-	<el-dialog :title="title" :visible.sync="dialogVisible" :before-close="handleClose">
+	<el-dialog :title="title" :visible.sync="dialogVisible" :close-on-click-modal="false">
 		模态框
 		<span slot="footer">
 			<el-button @click="dialogVisible = false">取消</el-button>

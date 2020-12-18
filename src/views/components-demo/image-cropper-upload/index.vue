@@ -1,7 +1,8 @@
 <template>
 	<div>
+		<h1>裁剪上传</h1>
 		<el-image style="width: 100px; height: 100px" :src="image" :preview-src-list="srcList"> </el-image>
-		<el-button type="primary" icon="el-icon-upload" @click="imagecropperShow = true"> Change Avatar </el-button>
+		<div><el-button type="primary" icon="el-icon-upload" @click="imagecropperShow = true"> Upload</el-button></div>
 		<image-cropper
 			v-show="imagecropperShow"
 			:key="imagecropperKey"
