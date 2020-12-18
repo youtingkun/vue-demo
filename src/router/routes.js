@@ -1,6 +1,7 @@
 import Layout from '@/layout';
 import nested from './modules/nested.js';
 import table from './modules/table.js';
+import components from './modules/components.js';
 
 export const constantRoutes = [
 	{
@@ -59,6 +60,7 @@ export const asyncRoutes = [
 	},
 	nested,
 	table,
+	components,
 	{
 		path: '/custom-directives',
 		component: Layout,

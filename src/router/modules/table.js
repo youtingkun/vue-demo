@@ -25,6 +25,15 @@ const table = {
 				icon: 'el-icon-share',
 			},
 		},
+		{
+			path: 'PS-table-list-demo',
+			component: () => import('@/views/table/PS-table-list-page-demo'),
+			name: 'PS-table-list-demo',
+			meta: {
+				title: 'PS表格列表模板',
+				icon: 'el-icon-share',
+			},
+		},
 	],
 };
 
