@@ -11,13 +11,13 @@ const users = {
 	'admin-token': {
 		roles: ['admin', 'form', 'address', 'table'],
 		introduction: 'I am a super administrator',
-		avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
+		avatar: 'http://ww1.sinaimg.cn/large/8112eb67ly1glsb1fm0gpj208b04o745.jpg',
 		name: 'Super Admin',
 	},
 	'editor-token': {
 		roles: ['editor'],
 		introduction: 'I am an editor',
-		avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
+		avatar: 'http://ww1.sinaimg.cn/large/8112eb67ly1glsb203bngj207w04xaa1.jpg',
 		name: 'Normal Editor',
 	},
 };

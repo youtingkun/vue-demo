@@ -5,7 +5,7 @@
 		<h1>钩子函数参数：</h1>
 		<div id="hook-arguments-example" v-demo:foo.a.b="message"></div>
 		<h1>动态参数</h1>
-		<p v-pin:[direction]="200">I am pinned onto the page at 200px to the left.</p>
+		<div v-pin:[direction]="200">I am pinned onto the page at 200px to the left.</div>
 		<h1>对象字面变量</h1>
 		<div v-demoone="{ color: 'red', text: 'hello!' }">123</div>
 	</div>
@@ -17,7 +17,7 @@ export default {
 	data() {
 		return {
 			message: 'hello!',
-			direction: 'top',
+			direction: 'left',
 		};
 	},
 	directives: {

@@ -15,7 +15,7 @@ export default {
 		return {
 			dialogVisible: false,
 			title: '',
-			disable: 'false',
+			disable: false,
 		};
 	},
 	methods: {
