@@ -2,6 +2,7 @@ import Layout from '@/layout';
 import nested from './modules/nested.js';
 import table from './modules/table.js';
 import components from './modules/components.js';
+import vue from './modules/vue';
 
 export const constantRoutes = [
 	{
@@ -24,6 +25,18 @@ export const constantRoutes = [
 				component: () => import('@/views/dashboard/index'),
 				name: 'dashboard',
 				meta: { title: '首页', icon: 'dashboard', affix: true },
+			},
+		],
+	},
+	{
+		path: '/temp',
+		component: Layout,
+		children: [
+			{
+				path: 'index',
+				component: () => import('@/views/temp/index'),
+				name: 'temp',
+				meta: { title: 'temp' },
 			},
 		],
 	},
@@ -61,6 +74,7 @@ export const asyncRoutes = [
 	nested,
 	table,
 	components,
+	vue,
 	{
 		path: '/custom-directives',
 		component: Layout,

@@ -46,3 +46,10 @@
 .el-range-separator {
 	box-sizing: content-box;
 }
+
+// ::v-deep .el-table__header th {
+// 	background-color: red !important;
+// }
+.el-table__header th {
+	background-color: rgb(245, 247, 250);
+}

@@ -14,7 +14,8 @@ module.exports = {
 		'selector-pseudo-class-no-unknown': null,
 		'scss/at-rule-no-unknown': true,
 		'property-no-unknown': null,
-		'no-descending-specificity': null,
+        'no-descending-specificity': null,
+        'selector-pseudo-element-no-unknown': null
 	},
 };
 

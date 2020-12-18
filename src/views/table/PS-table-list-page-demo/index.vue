@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<el-card shadow="never">
-			<el-form ref="searchForm" :inline="true" :model="searchForm">
+			<el-form ref="searchForm" :inline="true" :model="searchForm" header-row-style="color:red">
 				<el-form-item label="公司名">
 					<el-input v-model="searchForm.name" placeholder="请输入" />
 				</el-form-item>
@@ -12,9 +12,9 @@
 				<el-button type="primary" icon="el-icon-refresh-right" @click="handleReset('searchForm')">重置</el-button>
 			</el-form>
 		</el-card>
-		<el-card shadow="never" style="margin-top: 30px">
-			<div slot="header"><el-button type="primary" icon="el-icon-plus" @click="handleCreate">新增</el-button></div>
-			<el-table :data="tableData" style="width: 100%; margin-top: 30px">
+		<el-card shadow="never">
+			<el-button type="primary" icon="el-icon-plus" @click="handleCreate">新增</el-button>
+			<el-table :data="tableData" style="margin-top: 30px">
 				<el-table-column prop="date" label="日期" width="180" />
 				<el-table-column prop="name" label="姓名" width="180" />
 				<el-table-column prop="address" label="地址" />
@@ -42,6 +42,7 @@
 				/>
 			</div>
 		</el-card>
+
 		<detail ref="detail" @getList="getTableData()" />
 	</div>
 </template>
@@ -188,11 +189,4 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
-.pagination {
-	margin-top: 30px;
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-end;
-}
-</style>
+<style lang="scss"></style>
