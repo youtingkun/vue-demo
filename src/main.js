@@ -8,8 +8,13 @@ import router from './router';
 import store from './store';
 import '@/icons';
 import VueI18n from 'vue-i18n';
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/vue-loading.css';
 import '@/styles/index.scss'; // global css
+import drectives from './directive';
 
+Vue.use(drectives);
+Vue.use(Loading);
 Vue.use(VueI18n);
 
 const i18n = new VueI18n({

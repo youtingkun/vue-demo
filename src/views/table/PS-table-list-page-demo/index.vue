@@ -5,6 +5,11 @@
 				<el-form-item label="公司名">
 					<el-input v-model="searchForm.name" placeholder="请输入" />
 				</el-form-item>
+				<el-form-item label="选择">
+					<el-select v-model="searchForm.select" placeholder="请选择" clearable>
+						<el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"> </el-option>
+					</el-select>
+				</el-form-item>
 				<el-form-item label="时间" prop="time">
 					<el-date-picker v-model="searchForm.time" type="daterange" value-format="yyyy-MM-dd" placeholder="请选择" />
 				</el-form-item>
@@ -56,9 +61,24 @@ export default {
 	},
 	data() {
 		return {
+			options: [
+				{
+					value: '选项1',
+					label: '黄金糕',
+				},
+				{
+					value: '选项2',
+					label: '双皮奶',
+				},
+				{
+					value: '选项3',
+					label: '蚵仔煎',
+				},
+			],
 			searchForm: {
 				name: '',
 				time: '',
+				select: '',
 			},
 			tableData: [
 				{

@@ -1,5 +1,7 @@
 <template>
 	<div>
+		<h1>拖拽</h1>
+		<div class="el-dialog" v-draggable>123</div>
 		<h1>基础使用</h1>
 		<input v-focus />
 		<h1>钩子函数参数：</h1>
@@ -8,6 +10,17 @@
 		<div v-pin:[direction]="200">I am pinned onto the page at 200px to the left.</div>
 		<h1>对象字面变量</h1>
 		<div v-demoone="{ color: 'red', text: 'hello!' }">123</div>
+		<h1>复制</h1>
+		<div v-copy="copyText">点击复制</div>
+		<h1>长按事件</h1>
+		<el-button v-longpress="longPress">长按</el-button>
+		<h1>防抖按钮</h1>
+		<el-button v-debounce="debounceClick">防抖</el-button>
+		<h1>权限命令</h1>
+		<el-button v-permission="1">权限按钮</el-button>
+		<el-button v-permission="10">权限按钮</el-button>
+		<h1>水印</h1>
+		<div v-waterMarker="{ text: 'ytk版权所有', textColor: 'rgba(180, 180, 180, 0.4)' }" style="height: 100px"></div>
 	</div>
 </template>
 
@@ -18,6 +31,7 @@ export default {
 		return {
 			message: 'hello!',
 			direction: 'left',
+			copyText: 'a copy directives',
 		};
 	},
 	directives: {
@@ -62,6 +76,16 @@ export default {
 				el.style.color = binding.value.color;
 				console.log('颜色', binding.value.color);
 			},
+		},
+	},
+	methods: {
+		longPress() {
+			console.log('长按事件');
+			this.$message.info('长按事件');
+		},
+		debounceClick() {
+			console.log('防抖按钮');
+			this.$message.info('防抖按钮');
 		},
 	},
 };
