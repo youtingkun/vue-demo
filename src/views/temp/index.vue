@@ -3,6 +3,8 @@
 		<!-- your form inputs goes here-->
 		<label><input type="checkbox" v-model="fullPage" />Full page?</label>
 		<button type="submit">Login</button>
+		<el-button @click="changeLang">切换语言</el-button>
+		{{ $t('hello') }}
 	</form>
 </template>
 
@@ -28,6 +30,9 @@ export default {
 		},
 		onCancel() {
 			console.log('User cancelled the loader.');
+		},
+		changeLang() {
+			this.$i18n.locale = this.$i18n.locale === 'zh' ? 'en' : 'zh';
 		},
 	},
 };
