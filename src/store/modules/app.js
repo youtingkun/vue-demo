@@ -1,4 +1,5 @@
 import Cookies from 'js-cookie';
+import { getLanguage } from '@/lang/index';
 
 const state = {
 	sidebar: {
@@ -6,7 +7,7 @@ const state = {
 		withoutAnimation: false,
 	},
 	device: 'desktop',
-	language: 'zh',
+	language: getLanguage(),
 };
 
 const mutations = {
