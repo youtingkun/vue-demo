@@ -3,6 +3,7 @@ import nested from './modules/nested.js';
 import table from './modules/table.js';
 import components from './modules/components.js';
 import vue from './modules/vue';
+import wheel from './modules/wheel';
 
 export const constantRoutes = [
 	{
@@ -75,6 +76,7 @@ export const asyncRoutes = [
 	table,
 	components,
 	vue,
+	wheel,
 	{
 		path: '/custom-directives',
 		component: Layout,
