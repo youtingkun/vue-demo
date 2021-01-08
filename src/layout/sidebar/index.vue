@@ -1,5 +1,6 @@
 <template>
 	<div class="">
+		<logo :collapse="isCollapse" />
 		<el-scrollbar wrap-class="scrollbar-wrapper">
 			<el-menu
 				:default-active="activeMenu"
@@ -20,8 +21,9 @@
 <script>
 import SidebarItem from './sidebar-item.vue';
 import variables from '@/styles/variables.scss';
+import Logo from './logo';
 export default {
-	components: { SidebarItem },
+	components: { SidebarItem, Logo },
 	props: {},
 	data() {
 		return {};

@@ -8,6 +8,7 @@ const state = {
 	},
 	device: 'desktop',
 	language: getLanguage(),
+	sidebarLogo: true,
 };
 
 const mutations = {
