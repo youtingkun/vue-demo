@@ -6,6 +6,7 @@ import emoji from './modules/emoji';
 import lazyLoad from './modules/lazy-load';
 import permission from './modules/premission';
 import waterMarker from './modules/water-marker';
+import has from './modules/has';
 // 自定义指令
 const directives = {
 	copy,
@@ -16,6 +17,7 @@ const directives = {
 	lazyLoad,
 	permission,
 	waterMarker,
+	has,
 };
 
 export default {
