@@ -14,6 +14,14 @@ const vue = {
 				title: 'nextTick',
 			},
 		},
+		{
+			path: 'vModel',
+			name: 'vModel',
+			component: () => import('@/views/vue/vModel'),
+			meta: {
+				title: 'vModel',
+			},
+		},
 	],
 };
 
