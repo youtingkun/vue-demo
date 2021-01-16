@@ -11,7 +11,7 @@ const mock = {
 			component: () => import('@/views/mock/basic'),
 			name: 'mockBasic',
 			meta: {
-				title: 'basic',
+				title: 'mock',
 			},
 		},
 	],
