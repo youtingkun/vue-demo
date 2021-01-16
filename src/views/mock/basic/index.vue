@@ -92,6 +92,10 @@
 			<el-table-column prop="id" label="id"></el-table-column>
 			<el-table-column prop="increment" label="自增整数"></el-table-column>
 		</el-table>
+		正则
+		<el-table :data="basicList">
+			<el-table-column prop="mobile" label="电话"></el-table-column>
+		</el-table>
 	</div>
 </template>
 

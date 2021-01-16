@@ -48,6 +48,7 @@ module.exports = [
 						guid: '@guid',
 						id: '@id',
 						increment: '@increment',
+						mobile: /^1[0-9]{10}$/,
 					}),
 				);
 			}
