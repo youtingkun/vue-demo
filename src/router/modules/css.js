@@ -22,6 +22,14 @@ const css = {
 				title: 'threejs',
 			},
 		},
+		{
+			path: 'base',
+			component: () => import('@/views/css/test-threejs/base.vue'),
+			name: 'base',
+			meta: {
+				title: 'base',
+			},
+		},
 	],
 };
 
