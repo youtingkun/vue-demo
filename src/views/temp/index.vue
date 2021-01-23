@@ -9,11 +9,13 @@
 		</form>
 		<div>原数据：{{ aesData }}加密后的数据：{{ encryptData }}解密后的数据：{{ decryptData }}</div>
 		<el-button @click="encryptDataF">加密数据</el-button>
+		<el-button @click="testNpmPackage">testMyNpm</el-button>
 	</div>
 </template>
 
 <script>
 import crypto from '@/utils/crypto';
+import npmDemo from 'ytk-utils';
 export default {
 	data() {
 		return {
@@ -25,6 +27,10 @@ export default {
 	},
 	mounted() {},
 	methods: {
+		testNpmPackage() {
+			const my = new npmDemo();
+			my.f1();
+		},
 		encryptDataF() {
 			this.encryptData = crypto.encrypt(JSON.stringify(this.aesData));
 			this.decryptData = crypto.decrypt(this.encryptData);

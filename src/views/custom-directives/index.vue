@@ -17,7 +17,8 @@
 		<h1>防抖按钮</h1>
 		<el-button v-debounce="debounceClick">防抖</el-button>
 		<h1>节流按钮</h1>
-		<el-button v-throttle="throttleClick">节流</el-button>
+		<el-button v-throttle="throttleClick" v-show="throttle">节流</el-button>
+		<el-button @click="changeThrottle">改变状态</el-button>
 		<h1>权限命令</h1>
 		<el-button v-permission="1">权限按钮</el-button>
 		<el-button v-permission="10">权限按钮</el-button>
@@ -34,6 +35,7 @@ export default {
 			message: 'hello!',
 			direction: 'left',
 			copyText: 'a copy directives',
+			throttle: true,
 		};
 	},
 	directives: {
@@ -81,6 +83,9 @@ export default {
 		},
 	},
 	methods: {
+		changeThrottle() {
+			this.throttle = !this.throttle;
+		},
 		longPress() {
 			console.log('长按事件');
 			this.$message.info('长按事件');
