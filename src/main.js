@@ -14,6 +14,9 @@ import '@/styles/index.scss'; // global css
 import drectives from './directive';
 
 import i18n from './lang';
+// import VThrottle from 'v-throttle';
+
+// Vue.use(VThrottle);
 
 Vue.use(drectives);
 Vue.use(Loading);

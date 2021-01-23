@@ -1,12 +1,22 @@
 <template>
-	<div>表单</div>
+	<div>
+		<el-form label-width="150px">
+			<el-form-item label="input输入框必填">
+				<el-input v-model="ruleForm.required"></el-input>
+			</el-form-item>
+		</el-form>
+	</div>
 </template>
 
 <script>
 export default {
 	name: '',
 	data() {
-		return {};
+		return {
+			ruleForm: {
+				required: '',
+			},
+		};
 	},
 };
 </script>

@@ -7,6 +7,7 @@ import lazyLoad from './modules/lazy-load';
 import permission from './modules/premission';
 import waterMarker from './modules/water-marker';
 import has from './modules/has';
+import throttle from './modules/throttle';
 // 自定义指令
 const directives = {
 	copy,
@@ -18,6 +19,7 @@ const directives = {
 	permission,
 	waterMarker,
 	has,
+	throttle,
 };
 
 export default {

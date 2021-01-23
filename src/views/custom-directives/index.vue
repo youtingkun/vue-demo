@@ -16,6 +16,8 @@
 		<el-button v-longpress="longPress">长按</el-button>
 		<h1>防抖按钮</h1>
 		<el-button v-debounce="debounceClick">防抖</el-button>
+		<h1>节流按钮</h1>
+		<el-button v-throttle="throttleClick">节流</el-button>
 		<h1>权限命令</h1>
 		<el-button v-permission="1">权限按钮</el-button>
 		<el-button v-permission="10">权限按钮</el-button>
@@ -86,6 +88,9 @@ export default {
 		debounceClick() {
 			console.log('防抖按钮');
 			this.$message.info('防抖按钮');
+		},
+		throttleClick() {
+			console.log('节流按钮');
 		},
 	},
 };
