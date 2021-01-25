@@ -40,8 +40,9 @@ router.beforeEach(async (to, from, next) => {
 			} else {
 				try {
 					const { roles } = await store.dispatch('user/getInfo');
-					const accessRoutes = await store.dispatch('permission/generateRoutes', roles);
-					router.addRoutes(accessRoutes);
+					const generateRoutes = await store.dispatch('permission/generateRoutes', roles);
+					// console.log(JSON.stringify(generateRoutes));
+					router.addRoutes(generateRoutes);
 					next({ ...to, replace: true });
 					NProgress.done();
 				} catch (error) {

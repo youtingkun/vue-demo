@@ -20,8 +20,8 @@
 		<el-button v-throttle="throttleClick" v-show="throttle">节流</el-button>
 		<el-button @click="changeThrottle">改变状态</el-button>
 		<h1>权限命令</h1>
-		<el-button v-permission="1">权限按钮</el-button>
-		<el-button v-permission="10">权限按钮</el-button>
+		<el-button v-permission="1">权限按钮1</el-button>
+		<el-button v-permission="3">权限按钮3</el-button>
 		<h1>水印</h1>
 		<div v-waterMarker="{ text: 'ytk版权所有', textColor: 'rgba(180, 180, 180, 0.4)' }" style="height: 100px"></div>
 	</div>

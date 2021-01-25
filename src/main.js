@@ -12,6 +12,7 @@ import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
 import '@/styles/index.scss'; // global css
 import drectives from './directive';
+import api from './api/index.js';
 
 import i18n from './lang';
 // import VThrottle from 'v-throttle';
@@ -23,6 +24,7 @@ Vue.use(Loading);
 Vue.use(VueI18n);
 
 Vue.config.productionTip = false;
+Vue.prototype.$api = api;
 Vue.use(ElementUI, {
 	i18n: (key, value) => i18n.t(key, value),
 });

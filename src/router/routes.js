@@ -6,6 +6,7 @@ import vue from './modules/vue';
 import wheel from './modules/wheel';
 import mock from './modules/mock';
 import css from './modules/css';
+import system from './modules/system';
 
 export const constantRoutes = [
 	{
@@ -81,6 +82,7 @@ export const asyncRoutes = [
 	wheel,
 	mock,
 	css,
+	system,
 	{
 		path: '/custom-directives',
 		component: Layout,

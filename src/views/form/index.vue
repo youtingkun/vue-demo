@@ -4,7 +4,7 @@
 			<el-form-item label="input输入框必填">
 				<el-input v-model="ruleForm.required"></el-input>
 			</el-form-item>
-			<el-form-item label="限制输入格式">
+			<el-form-item label="限制输入格式为数字和点号">
 				<el-input v-model="ruleForm.phones" @input="changeCode"></el-input>
 			</el-form-item>
 		</el-form>

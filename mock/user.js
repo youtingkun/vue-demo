@@ -80,4 +80,17 @@ module.exports = [
 			};
 		},
 	},
+	{
+		url: 'user/getBtnPermissionList',
+		type: 'post',
+		response: config => {
+			return {
+				code: 20000,
+				message: 'success',
+				data: {
+					list: ['add', 'del', 'update'],
+				},
+			};
+		},
+	},
 ];

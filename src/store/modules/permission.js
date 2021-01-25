@@ -5,6 +5,7 @@ import { asyncRoutes, constantRoutes } from '@/router/routes';
  * @param roles
  * @param route
  */
+// 如果route里面有meta.roles，那么就必须匹配，否则就默认生成
 function hasPermission(roles, route) {
 	if (route.meta && route.meta.roles) {
 		return roles.some(role => route.meta.roles.includes(role));

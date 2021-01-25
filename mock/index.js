@@ -1,9 +1,9 @@
 const Mock = require('mockjs');
 const user = require('./user');
-
 const mockTest = require('./mock-test.js');
+const system = require('./system');
 
-const mocks = [...user, ...mockTest];
+const mocks = [...user, ...mockTest, ...system];
 
 function param2Obj(url) {
 	const search = decodeURIComponent(url.split('?')[1]).replace(/\+/g, ' ');
