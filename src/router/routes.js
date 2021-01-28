@@ -7,6 +7,7 @@ import wheel from './modules/wheel';
 import mock from './modules/mock';
 import css from './modules/css';
 import system from './modules/system';
+import form from './modules/form';
 
 export const constantRoutes = [
 	{
@@ -55,7 +56,7 @@ export const asyncRoutes = [
 				path: 'index',
 				name: 'form',
 				component: () => import('@/views/form/index'),
-				meta: { title: '表单', icon: 'form', roles: 'form' },
+				meta: { title: '表单', icon: 'form' },
 			},
 		],
 	},

@@ -19,6 +19,7 @@ function hasPermission(roles, route) {
  * @param routes asyncRoutes
  * @param roles
  */
+// 这个算法子路由判断的时候需要父路由也有权限才会显示。只有子路由权限没有父路由权限，那么整个父路由下面的子路由都不会显示。
 export function filterAsyncRoutes(routes, roles) {
 	const res = [];
 

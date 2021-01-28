@@ -4,9 +4,10 @@ const componentsRouter = {
 	component: Layout,
 	redirect: 'noRedirect',
 	name: 'ComponentDemo',
+	alwaysShow: true,
 	meta: {
 		title: 'Components',
-		icon: 'component',
+		icon: 'dashboard',
 	},
 	children: [
 		{

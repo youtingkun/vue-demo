@@ -6,6 +6,7 @@ module.exports = {
     extends: ['plugin:vue/essential', 'plugin:prettier/recommended'],
     rules: {
         'prettier/prettier': 'error',
+        "vue/no-unused-components": "off"
     },
     parserOptions: {
         parser: 'babel-eslint',
