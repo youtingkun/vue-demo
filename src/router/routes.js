@@ -8,6 +8,7 @@ import mock from './modules/mock';
 import css from './modules/css';
 import system from './modules/system';
 import form from './modules/form';
+import testThreejs from './modules/test-threejs';
 
 export const constantRoutes = [
 	{
@@ -84,6 +85,7 @@ export const asyncRoutes = [
 	mock,
 	css,
 	system,
+	testThreejs,
 	{
 		path: '/custom-directives',
 		component: Layout,

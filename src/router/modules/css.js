@@ -14,22 +14,6 @@ const css = {
 				title: 'cloud',
 			},
 		},
-		{
-			path: 'threejs',
-			component: () => import('@/views/css/test-threejs'),
-			name: 'threejs',
-			meta: {
-				title: 'threejs',
-			},
-		},
-		{
-			path: 'base',
-			component: () => import('@/views/css/test-threejs/base.vue'),
-			name: 'base',
-			meta: {
-				title: 'base',
-			},
-		},
 	],
 };
 
