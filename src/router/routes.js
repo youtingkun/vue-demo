@@ -54,7 +54,7 @@ export const asyncRoutes = [
 		children: [
 			{
 				path: 'index',
-				name: 'form',
+				name: 'formPage',
 				component: () => import('@/views/form/index'),
 				meta: { title: '表单', icon: 'form' },
 			},

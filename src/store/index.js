@@ -4,6 +4,7 @@ import addressStore from './modules/addressStore';
 import app from './modules/app';
 import user from './modules/user';
 import permission from './modules/permission';
+import tagsView from './modules/tagsView';
 
 Vue.use(Vuex);
 
@@ -13,5 +14,6 @@ export default new Vuex.Store({
 		app,
 		user,
 		permission,
+		tagsView,
 	},
 });

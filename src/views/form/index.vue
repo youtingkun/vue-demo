@@ -22,7 +22,7 @@
 import ytkUtils from 'ytk-utils';
 
 export default {
-	name: '',
+	name: 'formPage',
 	data() {
 		return {
 			ruleForm: {

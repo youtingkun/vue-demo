@@ -3,6 +3,7 @@
 		<sidebar class="sidebar-container" />
 		<div class="main-container">
 			<navbar />
+			<tags-View></tags-View>
 			<app-main />
 		</div>
 	</div>
@@ -12,10 +13,11 @@
 import Sidebar from './sidebar/index';
 import AppMain from './app-main';
 import Navbar from './navbar';
+import TagsView from './TagsView';
 
 export default {
 	name: '',
-	components: { Sidebar, AppMain, Navbar },
+	components: { Sidebar, AppMain, Navbar, TagsView },
 	props: {},
 	data() {
 		return {};
