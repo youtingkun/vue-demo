@@ -22,6 +22,14 @@ const wheel = {
 				title: 'loading',
 			},
 		},
+		{
+			path: 'websocket',
+			component: () => import('@/views/wheel/websocket'),
+			name: 'websocket',
+			meta: {
+				title: 'websocket',
+			},
+		},
 	],
 };
 

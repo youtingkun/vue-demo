@@ -15,6 +15,7 @@ import drectives from './directive';
 import api from './api/index.js';
 
 import i18n from './lang';
+
 // import VThrottle from 'v-throttle';
 
 // Vue.use(VThrottle);

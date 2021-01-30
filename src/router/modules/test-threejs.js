@@ -24,7 +24,7 @@ const testThreejs = {
 		},
 		{
 			path: 'line',
-			component: () => import('@/views/test-threejs/base.vue'),
+			component: () => import('@/views/test-threejs/line.vue'),
 			name: 'line',
 			meta: {
 				title: 'line',
