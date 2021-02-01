@@ -2,61 +2,48 @@
 	<div>
 		<form onsubmit="return false;">
 			<h3>WebSocket 聊天室：</h3>
-			<textarea id="responseText" style="width: 500px; height: 300px"></textarea>
+
+			<el-input type="textarea" id="responseText" v-model="textValue" :autosize="{ minRows: 3, maxRows: 100 }"></el-input>
 			<br />
-			<input type="text" name="message" style="width: 300px" value="Welcome to waylau.com" v-model="message" />
-			<input type="button" value="发送消息" @click="send()" />
-			<input type="button" @click="reset()" value="清空聊天记录" />
+			<el-input type="text" style="width: 300px" value="Welcome to waylau.com" v-model="message" />
+			<el-button @click="send()">发送消息</el-button>
+			<el-button @click="reset()">清空聊天记录</el-button>
 		</form>
 	</div>
 </template>
 
 <script>
+import socket from '@/utils/socket';
 export default {
 	name: '',
 	data() {
 		return {
 			socket: '',
+			textValue: 'websocket',
 			message: '',
 		};
 	},
 	mounted() {
-		this.init();
+		this.initSocket();
 	},
 	methods: {
-		init() {
-			if (!window.WebSocket) {
-				window.WebSocket = window.MozWebSocket;
-			}
-			if (window.WebSocket) {
-				this.socket = new WebSocket('ws://localhost:3000');
-				this.socket.onmessage = function (event) {
-					var ta = document.getElementById('responseText');
-					ta.value = ta.value + '\n' + event.data;
-				};
-				this.socket.onopen = function (event) {
-					var ta = document.getElementById('responseText');
-					ta.value = '连接开启!';
-				};
-				this.socket.onclose = function (event) {
-					var ta = document.getElementById('responseText');
-					ta.value = ta.value + '连接被关闭';
-				};
-			} else {
-				alert('你的浏览器不支持 WebSocket！');
-			}
+		initSocket() {
+			this.socket = socket(this.onmessage);
+		},
+		// 接受消息事件，处理函数
+		onmessage(event) {
+			this.textValue = this.textValue + '\n' + event.data;
 		},
 		send() {
-			if (!window.WebSocket) {
-				return;
-			}
 			if (this.socket.readyState == WebSocket.OPEN) {
 				this.socket.send(this.message);
 			} else {
 				alert('连接没有开启.');
 			}
 		},
-		reset() {},
+		reset() {
+			this.textValue = '';
+		},
 	},
 };
 </script>
