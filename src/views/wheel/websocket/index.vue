@@ -2,7 +2,6 @@
 	<div>
 		<form onsubmit="return false;">
 			<h3>WebSocket 聊天室：</h3>
-
 			<el-input type="textarea" id="responseText" v-model="textValue" :autosize="{ minRows: 3, maxRows: 100 }"></el-input>
 			<br />
 			<el-input type="text" style="width: 300px" value="Welcome to waylau.com" v-model="message" />
@@ -28,7 +27,8 @@ export default {
 	},
 	methods: {
 		initSocket() {
-			this.socket = socket(this.onmessage);
+			this.socket = socket();
+			this.socket.onmessage = this.onmessage;
 		},
 		// 接受消息事件，处理函数
 		onmessage(event) {

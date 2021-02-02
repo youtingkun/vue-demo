@@ -1,5 +1,5 @@
 <template>
-	<div id="canvas-frame"></div>
+	<div id="canvas-frame" style="height: 300px"></div>
 </template>
 
 <script>
@@ -46,21 +46,22 @@ export default {
 			scene.add(light);
 		}
 
+		var cube;
 		function initObject() {
 			var geometry = new THREE.Geometry();
-			var material = new THREE.LineBasicMaterial({ vertexColors: true });
-			var color1 = new THREE.Color(0x444444),
-				color2 = new THREE.Color(0xff0000);
+			geometry.vertices.push(new THREE.Vector3(-500, 0, 0));
+			geometry.vertices.push(new THREE.Vector3(500, 0, 0));
 
-			// 线的材质可以由2点的颜色决定
-			var p1 = new THREE.Vector3(-100, 0, 100);
-			var p2 = new THREE.Vector3(100, 0, -100);
-			geometry.vertices.push(p1);
-			geometry.vertices.push(p2);
-			geometry.colors.push(color1, color2);
+			for (var i = 0; i <= 20; i++) {
+				var line = new THREE.Line(geometry, new THREE.LineBasicMaterial({ color: 0x000000, opacity: 0.2 }));
+				line.position.z = i * 50 - 500;
+				scene.add(line);
 
-			var line = new THREE.Line(geometry, material, THREE.LineSegments);
-			scene.add(line);
+				var line = new THREE.Line(geometry, new THREE.LineBasicMaterial({ color: 0x000000, opacity: 0.2 }));
+				line.position.x = i * 50 - 500;
+				line.rotation.y = (90 * Math.PI) / 180;
+				scene.add(line);
+			}
 		}
 
 		function threeStart() {
@@ -74,12 +75,11 @@ export default {
 		}
 		threeStart();
 	},
-	methods: {},
 };
 </script>
 
 <style scoped>
-#canvas-frame {
+div#canvas-frame {
 	border: none;
 	cursor: pointer;
 	width: 100%;

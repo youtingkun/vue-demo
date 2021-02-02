@@ -10,6 +10,7 @@
 		<div>原数据：{{ aesData }}加密后的数据：{{ encryptData }}解密后的数据：{{ decryptData }}</div>
 		<el-button @click="encryptDataF">加密数据</el-button>
 		<el-button @click="testNpmPackage">testMyNpm</el-button>
+		<lang-select></lang-select>
 	</div>
 </template>
 

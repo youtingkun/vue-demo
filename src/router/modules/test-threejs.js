@@ -7,6 +7,14 @@ const testThreejs = {
 	},
 	children: [
 		{
+			path: 'scene',
+			component: () => import('@/views/test-threejs/scene'),
+			name: 'scene',
+			meta: {
+				title: 'scene',
+			},
+		},
+		{
 			path: 'index',
 			component: () => import('@/views/test-threejs/index'),
 			name: 'index',
@@ -28,6 +36,46 @@ const testThreejs = {
 			name: 'line',
 			meta: {
 				title: 'line',
+			},
+		},
+		{
+			path: 'grid',
+			component: () => import('@/views/test-threejs/grid.vue'),
+			name: 'grid',
+			meta: {
+				title: 'grid',
+			},
+		},
+		{
+			path: 'stats',
+			component: () => import('@/views/test-threejs/stats.vue'),
+			name: 'stats',
+			meta: {
+				title: 'stats',
+			},
+		},
+		{
+			path: 'camera',
+			component: () => import('@/views/test-threejs/camera.vue'),
+			name: 'camera',
+			meta: {
+				title: 'camera',
+			},
+		},
+		{
+			path: 'light',
+			component: () => import('@/views/test-threejs/light.vue'),
+			name: 'light',
+			meta: {
+				title: 'light',
+			},
+		},
+		{
+			path: 'responsive',
+			component: () => import('@/views/test-threejs/responsive.vue'),
+			name: 'responsive',
+			meta: {
+				title: 'responsive',
 			},
 		},
 	],

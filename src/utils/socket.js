@@ -15,10 +15,10 @@ const functiongetSocket = callback => {
 		};
 
 		// 获得消息事件
-		socket.onmessage = function (msg) {
-			// 发现消息进入, 开始处理前端触发逻辑
-			callback(msg);
-		};
+		// socket.onmessage = function (msg) {
+		// 	// 发现消息进入, 开始处理前端触发逻辑
+		// 	callback(msg);
+		// };
 
 		// 关闭事件
 		socket.onclose = function () {

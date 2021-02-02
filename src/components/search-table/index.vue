@@ -1,19 +1,11 @@
 <template>
-	<div class="">
-		<common-search></common-search>
-		<common-table></common-table>
-		<common-pagination :page="page"></common-pagination>
-	</div>
+	<div class="">1</div>
 </template>
 
 <script>
-import CommonPagination from '@/components/common-pagination';
-import CommonSearch from '@/components/common-search';
-import CommonTable from '@/components/common-table';
-
 export default {
 	name: 'search-table',
-	components: { CommonPagination, CommonSearch, CommonTable },
+	components: {},
 	props: {
 		page: {
 			type: Object,

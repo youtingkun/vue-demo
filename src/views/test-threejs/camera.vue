@@ -1,5 +1,8 @@
 <template>
-	<div id="canvas-frame"></div>
+	<div>
+		<div id="canvas-frame"></div>
+		<div>Fov:<input type="text" value="45" id="txtFov" />(0到180的值)</div>
+	</div>
 </template>
 
 <script>
@@ -25,12 +28,13 @@ export default {
 		var camera;
 		function initCamera() {
 			camera = new THREE.PerspectiveCamera(45, width / height, 1, 10000);
+			//camera = new THREE.OrthographicCamera( window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2, 10, 1000 );
 			camera.position.x = 0;
-			camera.position.y = 1000;
-			camera.position.z = 0;
+			camera.position.y = 0;
+			camera.position.z = 600;
 			camera.up.x = 0;
-			camera.up.y = 0;
-			camera.up.z = 1;
+			camera.up.y = 1;
+			camera.up.z = 0;
 			camera.lookAt(0, 0, 0);
 		}
 
@@ -41,26 +45,22 @@ export default {
 
 		var light;
 		function initLight() {
-			light = new THREE.DirectionalLight(0xff0000, 1.0, 0);
+			light = new THREE.AmbientLight(0xff0000);
 			light.position.set(100, 100, 200);
+			scene.add(light);
+
+			light = new THREE.PointLight(0x00ff00);
+			light.position.set(0, 0, 300);
 			scene.add(light);
 		}
 
+		var cube;
 		function initObject() {
-			var geometry = new THREE.Geometry();
-			var material = new THREE.LineBasicMaterial({ vertexColors: true });
-			var color1 = new THREE.Color(0x444444),
-				color2 = new THREE.Color(0xff0000);
-
-			// 线的材质可以由2点的颜色决定
-			var p1 = new THREE.Vector3(-100, 0, 100);
-			var p2 = new THREE.Vector3(100, 0, -100);
-			geometry.vertices.push(p1);
-			geometry.vertices.push(p2);
-			geometry.colors.push(color1, color2);
-
-			var line = new THREE.Line(geometry, material, THREE.LineSegments);
-			scene.add(line);
+			var geometry = new THREE.CylinderGeometry(70, 100, 200);
+			var material = new THREE.MeshLambertMaterial({ color: 0xffffff });
+			var mesh = new THREE.Mesh(geometry, material);
+			mesh.position.set(new THREE.Vector3(0, 0, 0));
+			scene.add(mesh);
 		}
 
 		function threeStart() {
@@ -69,12 +69,26 @@ export default {
 			initScene();
 			initLight();
 			initObject();
-			renderer.clear();
+			animation();
+		}
+		function animation() {
+			changeFov();
 			renderer.render(scene, camera);
+			requestAnimationFrame(animation);
+		}
+
+		function setCameraFov(fov) {
+			camera.fov = fov;
+			camera.updateProjectionMatrix();
+		}
+
+		function changeFov() {
+			var txtFov = document.getElementById('txtFov').value;
+			var val = parseFloat(txtFov);
+			setCameraFov(val);
 		}
 		threeStart();
 	},
-	methods: {},
 };
 </script>
 

@@ -13,6 +13,7 @@ import 'vue-loading-overlay/dist/vue-loading.css';
 import '@/styles/index.scss'; // global css
 import drectives from './directive';
 import api from './api/index.js';
+import '@/components/index';
 
 import i18n from './lang';
 
