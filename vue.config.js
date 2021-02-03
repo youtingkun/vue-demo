@@ -12,9 +12,13 @@ module.exports = {
 		hot: true, //模块热替换
 		hotOnly: true, //只有热更新不会刷新页面
 	},
-	configureWebpack: {
+	configureWebpack: config => {
 		// provide the app's title in webpack's name field, so that
 		// it can be accessed in index.html to inject the correct title.
+		// 打包去掉console.log()语句
+		if (process.env.NODE_ENV === 'production') {
+			config.optimization.minimizer[0].options.terserOptions.compress.drop_console = true;
+		}
 	},
 	chainWebpack: config => {
 		// 修复热更新失效

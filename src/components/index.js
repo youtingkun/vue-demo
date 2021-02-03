@@ -30,13 +30,13 @@ import camelCase from 'lodash/camelCase';
 // });
 
 const req = require.context('./', true, /^\.\/\w+\/index.vue$/);
-console.log('req', req);
+// console.log('req', req);
 
 req.keys().map(key => {
 	let temp = key;
-	console.log('key', key);
+	// console.log('key', key);
 	let name = temp.replace(/^\.\/(\w+)\/index.vue$/, '$1');
-	console.log(name);
+	// console.log(name);
 	name = name.replace(/[A-Z]+/g, function (char, index) {
 		if (index === 0) {
 			return char.toLowerCase();
@@ -44,6 +44,6 @@ req.keys().map(key => {
 			return '-' + char.toLowerCase();
 		}
 	});
-	console.log(name);
+	// console.log(name);
 	Vue.component(name, req(key).default);
 });

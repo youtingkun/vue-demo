@@ -7,6 +7,22 @@ const testThreejs = {
 	},
 	children: [
 		{
+			path: 'texture',
+			component: () => import('@/views/test-threejs/texture'),
+			name: 'texture',
+			meta: {
+				title: 'texture',
+			},
+		},
+		{
+			path: 'material',
+			component: () => import('@/views/test-threejs/material'),
+			name: 'material',
+			meta: {
+				title: 'material',
+			},
+		},
+		{
 			path: 'scene',
 			component: () => import('@/views/test-threejs/scene'),
 			name: 'scene',
