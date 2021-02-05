@@ -7,6 +7,30 @@ const testThreejs = {
 	},
 	children: [
 		{
+			path: 'load-obj',
+			component: () => import('@/views/test-threejs/load-obj'),
+			name: 'load-obj',
+			meta: {
+				title: 'load-obj',
+			},
+		},
+		{
+			path: 'fog',
+			component: () => import('@/views/test-threejs/fog'),
+			name: 'fog',
+			meta: {
+				title: 'fog',
+			},
+		},
+		{
+			path: 'shadow',
+			component: () => import('@/views/test-threejs/shadow'),
+			name: 'shadow',
+			meta: {
+				title: 'shadow',
+			},
+		},
+		{
 			path: 'texture',
 			component: () => import('@/views/test-threejs/texture'),
 			name: 'texture',
@@ -76,6 +100,14 @@ const testThreejs = {
 			name: 'camera',
 			meta: {
 				title: 'camera',
+			},
+		},
+		{
+			path: 'orthographic-camera',
+			component: () => import('@/views/test-threejs/orthographic-camera.vue'),
+			name: 'orthographic-camera',
+			meta: {
+				title: 'orthographic-camera',
 			},
 		},
 		{

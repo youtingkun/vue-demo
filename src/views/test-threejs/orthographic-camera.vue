@@ -16,22 +16,27 @@ import { RectAreaLightUniformsLib } from 'three/examples/jsm/lights/RectAreaLigh
 import { RectAreaLightHelper } from 'three/examples/jsm/helpers/RectAreaLightHelper.js';
 export default {
 	name: '',
+	components: {},
+	props: {},
 	data() {
 		return {};
 	},
+	computed: {},
+	watch: {},
+	methods: {},
+	created() {},
 	mounted() {
 		function main() {
-			// 选取canvas元素
 			const canvas = document.querySelector('#c');
 			const view1Elem = document.querySelector('#view1');
 			const view2Elem = document.querySelector('#view2');
 			const renderer = new THREE.WebGLRenderer({ canvas });
 
-			const fov = 45;
-			const aspect = 2; // the canvas default
+			const size = 1;
 			const near = 5;
-			const far = 100;
-			const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+			const far = 50;
+			const camera = new THREE.OrthographicCamera(-size, size, size, -size, near, far);
+			camera.zoom = 0.2;
 			camera.position.set(0, 10, 20);
 
 			const cameraHelper = new THREE.CameraHelper(camera);
@@ -60,7 +65,7 @@ export default {
 			}
 
 			const gui = new GUI();
-			gui.add(camera, 'fov', 1, 180);
+			gui.add(camera, 'zoom', 0.01, 1, 0.01).listen();
 			const minMaxGUIHelper = new MinMaxGUIHelper(camera, 'near', 'far', 0.1);
 			gui.add(minMaxGUIHelper, 'min', 0.1, 50, 0.1).name('near');
 			gui.add(minMaxGUIHelper, 'max', 0.1, 50, 0.1).name('far');
@@ -75,7 +80,7 @@ export default {
 				0.1, // near
 				500, // far
 			);
-			camera2.position.set(40, 10, 30);
+			camera2.position.set(16, 28, 40);
 			camera2.lookAt(0, 5, 0);
 
 			const controls2 = new OrbitControls(camera2, view2Elem);
@@ -178,8 +183,9 @@ export default {
 				{
 					const aspect = setScissorForElement(view1Elem);
 
-					// adjust the camera for this aspect
-					camera.aspect = aspect;
+					// update the camera for this aspect
+					camera.left = -aspect;
+					camera.right = aspect;
 					camera.updateProjectionMatrix();
 					cameraHelper.update();
 
@@ -187,8 +193,6 @@ export default {
 					cameraHelper.visible = false;
 
 					scene.background.set(0x000000);
-
-					// render
 					renderer.render(scene, camera);
 				}
 
@@ -196,7 +200,7 @@ export default {
 				{
 					const aspect = setScissorForElement(view2Elem);
 
-					// adjust the camera for this aspect
+					// update the camera for this aspect
 					camera2.aspect = aspect;
 					camera2.updateProjectionMatrix();
 
@@ -204,7 +208,6 @@ export default {
 					cameraHelper.visible = true;
 
 					scene.background.set(0x000040);
-
 					renderer.render(scene, camera2);
 				}
 
@@ -213,12 +216,24 @@ export default {
 
 			requestAnimationFrame(render);
 		}
+
 		main();
 	},
+	beforeCreate() {},
+	beforeMount() {},
+	beforeUpdate() {},
+	updated() {},
+	beforeDestroy() {},
+	destroyed() {},
+	activated() {},
 };
 </script>
-
-<style scoped>
+<style lang="scss" scoped>
+html,
+body {
+	margin: 0;
+	height: 100%;
+}
 #c {
 	width: 100%;
 	height: 100%;
