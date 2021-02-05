@@ -34,6 +34,7 @@ export default {
 			const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
 			camera.position.set(0, 10, 20);
 
+			// CameraHelper，用于线上camera的边框线
 			const cameraHelper = new THREE.CameraHelper(camera);
 
 			class MinMaxGUIHelper {
@@ -59,6 +60,7 @@ export default {
 				}
 			}
 
+			// 添加gui参数控制
 			const gui = new GUI();
 			gui.add(camera, 'fov', 1, 180);
 			const minMaxGUIHelper = new MinMaxGUIHelper(camera, 'near', 'far', 0.1);
@@ -86,6 +88,7 @@ export default {
 			scene.background = new THREE.Color('black');
 			scene.add(cameraHelper);
 
+			// 添加棋盘网格
 			{
 				const planeSize = 40;
 
@@ -106,6 +109,7 @@ export default {
 				mesh.rotation.x = Math.PI * -0.5;
 				scene.add(mesh);
 			}
+			// 添加正方体到场景当中
 			{
 				const cubeSize = 4;
 				const cubeGeo = new THREE.BoxBufferGeometry(cubeSize, cubeSize, cubeSize);
@@ -114,6 +118,7 @@ export default {
 				mesh.position.set(cubeSize + 1, cubeSize / 2, 0);
 				scene.add(mesh);
 			}
+			// 添加球体到场景当中
 			{
 				const sphereRadius = 3;
 				const sphereWidthDivisions = 32;
@@ -124,7 +129,7 @@ export default {
 				mesh.position.set(-sphereRadius - 1, sphereRadius + 2, 0);
 				scene.add(mesh);
 			}
-
+			// 添加方向光
 			{
 				const color = 0xffffff;
 				const intensity = 1;
