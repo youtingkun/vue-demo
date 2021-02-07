@@ -7,6 +7,22 @@ const testThreejs = {
 	},
 	children: [
 		{
+			path: 'GUI',
+			component: () => import('@/views/test-threejs/GUI'),
+			name: 'GUI',
+			meta: {
+				title: 'GUI',
+			},
+		},
+		{
+			path: 'geometry',
+			component: () => import('@/views/test-threejs/geometry'),
+			name: 'geometry',
+			meta: {
+				title: 'geometry',
+			},
+		},
+		{
 			path: 'load-obj',
 			component: () => import('@/views/test-threejs/load-obj'),
 			name: 'load-obj',

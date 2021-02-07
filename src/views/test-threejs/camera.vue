@@ -27,6 +27,7 @@ export default {
 			const view2Elem = document.querySelector('#view2');
 			const renderer = new THREE.WebGLRenderer({ canvas });
 
+			// 初始化相机1
 			const fov = 45;
 			const aspect = 2; // the canvas default
 			const near = 5;
@@ -34,9 +35,10 @@ export default {
 			const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
 			camera.position.set(0, 10, 20);
 
-			// CameraHelper，用于线上camera的边框线
+			// 添加CameraHelper，用于显示camera的边框线，这里的边框线只是设置的视图1相机的边框线
 			const cameraHelper = new THREE.CameraHelper(camera);
 
+			// 添加gui参数控制，这里的参数控制也是只控制的视图1的，视图2相机没有被控制
 			class MinMaxGUIHelper {
 				constructor(obj, minProp, maxProp, minDif) {
 					this.obj = obj;
@@ -59,18 +61,18 @@ export default {
 					this.min = this.min; // this will call the min setter
 				}
 			}
-
-			// 添加gui参数控制
 			const gui = new GUI();
 			gui.add(camera, 'fov', 1, 180);
 			const minMaxGUIHelper = new MinMaxGUIHelper(camera, 'near', 'far', 0.1);
 			gui.add(minMaxGUIHelper, 'min', 0.1, 50, 0.1).name('near');
 			gui.add(minMaxGUIHelper, 'max', 0.1, 50, 0.1).name('far');
 
+			// 使视图1可以被控制
 			const controls = new OrbitControls(camera, view1Elem);
 			controls.target.set(0, 5, 0);
 			controls.update();
 
+			// 第初始化相机2，注意此处是设置的整个场景2的相机，我们所看到的相机网格其实是在视图1当中设置的，因为我们视图2的相机更远更大，所以能看到。
 			const camera2 = new THREE.PerspectiveCamera(
 				60, // fov
 				2, // aspect
@@ -80,10 +82,12 @@ export default {
 			camera2.position.set(40, 10, 30);
 			camera2.lookAt(0, 5, 0);
 
+			// 使视图2可以被控制
 			const controls2 = new OrbitControls(camera2, view2Elem);
 			controls2.target.set(0, 5, 0);
 			controls2.update();
 
+			// 添加场景
 			const scene = new THREE.Scene();
 			scene.background = new THREE.Color('black');
 			scene.add(cameraHelper);
@@ -129,7 +133,7 @@ export default {
 				mesh.position.set(-sphereRadius - 1, sphereRadius + 2, 0);
 				scene.add(mesh);
 			}
-			// 添加方向光
+			// 添加方向光到场景当中
 			{
 				const color = 0xffffff;
 				const intensity = 1;
@@ -140,6 +144,7 @@ export default {
 				scene.add(light.target);
 			}
 
+			// 当渲染窗口变换的时候，重新渲染
 			function resizeRendererToDisplaySize(renderer) {
 				const canvas = renderer.domElement;
 				const width = canvas.clientWidth;
@@ -151,9 +156,12 @@ export default {
 				return needResize;
 			}
 
+			// 计算长宽比和视图与canvas重叠部分的位置
 			function setScissorForElement(elem) {
 				const canvasRect = canvas.getBoundingClientRect();
+				// console.log('canvasRect', canvasRect);
 				const elemRect = elem.getBoundingClientRect();
+				// console.log('elemRect', elemRect);
 
 				// compute a canvas relative rectangle
 				const right = Math.min(elemRect.right, canvasRect.right) - canvasRect.left;
@@ -166,7 +174,9 @@ export default {
 
 				// setup the scissor to only render to that part of the canvas
 				const positiveYUpBottom = canvasRect.height - bottom;
+				// 剪切绘制的视图区域
 				renderer.setScissor(left, positiveYUpBottom, width, height);
+				// 绘制视图区域的大小
 				renderer.setViewport(left, positiveYUpBottom, width, height);
 
 				// return the aspect
@@ -206,6 +216,7 @@ export default {
 					camera2.updateProjectionMatrix();
 
 					// draw the camera helper in the 2nd view
+					// 让视图1的相机边框线在视图2当中显示
 					cameraHelper.visible = true;
 
 					scene.background.set(0x000040);

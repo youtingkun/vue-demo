@@ -1,9 +1,16 @@
 <template>
-	<canvas id="c"></canvas>
+	<div>
+		<canvas id="c"></canvas>
+		<div class="split">
+			<div id="view1" tabindex="1"></div>
+			<div id="view2" tabindex="2"></div>
+		</div>
+	</div>
 </template>
 
 <script>
 import * as THREE from 'three';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 export default {
 	name: '',
 	data() {
@@ -13,6 +20,7 @@ export default {
 		function main() {
 			const canvas = document.querySelector('#c');
 			const renderer = new THREE.WebGLRenderer({ canvas });
+			const view1Elem = document.querySelector('#view1');
 
 			const fov = 40;
 			const aspect = 2; // the canvas default
@@ -23,16 +31,16 @@ export default {
 			camera.up.set(0, 0, 1);
 			camera.lookAt(0, 0, 0);
 
+			const controls = new OrbitControls(camera, view1Elem);
+			controls.target.set(0, 5, 0);
+			controls.update();
+
 			const scene = new THREE.Scene();
 
-			const radius = 1;
-			const widthSegments = 6;
-			const heightSegments = 6;
-			const sphereGeometry = new THREE.SphereBufferGeometry(radius, widthSegments, heightSegments);
-
-			const sunMaterial = new THREE.MeshPhongMaterial({ emissive: 0xffff00, shininess: 150 });
-			const sunMesh = new THREE.Mesh(sphereGeometry, sunMaterial);
-			scene.add(sunMesh);
+			const geometry = new THREE.BoxGeometry(1, 1, 1);
+			const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+			const cube = new THREE.Mesh(geometry, material);
+			scene.add(cube);
 
 			function resizeRendererToDisplaySize(renderer) {
 				const canvas = renderer.domElement;
@@ -51,7 +59,7 @@ export default {
 					camera.aspect = canvas.clientWidth / canvas.clientHeight;
 					camera.updateProjectionMatrix();
 				}
-
+				controls.update();
 				renderer.render(scene, camera);
 
 				requestAnimationFrame(render);
@@ -69,5 +77,17 @@ export default {
 	width: 100%;
 	height: 100%;
 	display: block;
+}
+.split {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+}
+.split > div {
+	width: 100%;
+	height: 100%;
 }
 </style>
