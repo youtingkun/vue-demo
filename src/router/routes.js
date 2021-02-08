@@ -10,6 +10,7 @@ import system from './modules/system';
 import form from './modules/form';
 import testThreejs from './modules/test-threejs';
 import threejsDemo from './modules/threejs-demo';
+import testWebgl from './modules/test-webgl';
 
 export const constantRoutes = [
 	{
@@ -88,6 +89,7 @@ export const asyncRoutes = [
 	system,
 	testThreejs,
 	threejsDemo,
+	testWebgl,
 	{
 		path: '/custom-directives',
 		component: Layout,
