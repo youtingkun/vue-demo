@@ -14,6 +14,14 @@ const css = {
 				title: 'cloud',
 			},
 		},
+		{
+			path: 'css-var',
+			component: () => import('@/views/css/css-var'),
+			name: 'css-var',
+			meta: {
+				title: 'css-var',
+			},
+		},
 	],
 };
 

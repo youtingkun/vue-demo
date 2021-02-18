@@ -1,42 +1,10 @@
-let id = 0;
-// 主要用于 Vue 的 diff 算法，为每个元素创建一个独一无二的 ID
-function generateID() {
-	return id++;
-}
-
-import { Message } from 'element-ui';
-function toast(message = '', type = 'error', duration = 1500) {
-	Message({
-		message,
-		type,
-		duration,
-	});
-}
-
-export function deepCopy(target) {
-	if (typeof target == 'object') {
-		const result = Array.isArray(target) ? [] : {};
-		for (const key in target) {
-			if (typeof target[key] == 'object') {
-				result[key] = deepCopy(target[key]);
-			} else {
-				result[key] = target[key];
-			}
-		}
-
-		return result;
-	}
-
-	return target;
-}
-
-export function swap(arr, i, j) {
-	const temp = arr[i];
-	arr[i] = arr[j];
-	arr[j] = temp;
-}
+import Vue from 'vue';
+import { deepCopy, swap } from '@/views/wheel/drag-demo/utils/utils';
+import toast from '@/views/wheel/drag-demo/utils/toast';
+import generateID from '@/views/wheel/drag-demo/utils/generateID';
 
 export default {
+	namespaced: true,
 	state: {
 		editMode: 'edit', // 编辑器模式 edit read
 		canvasStyleData: {
@@ -54,6 +22,59 @@ export default {
 		menuShow: false,
 		copyData: null, // 复制粘贴剪切
 	},
+	// actions: {
+	// 	paste({ state, commit }, isMouse) {
+	// 		if (!state.copyData) {
+	// 			toast('请选择组件');
+	// 			return;
+	// 		}
+
+	// 		const data = state.copyData.data;
+
+	// 		if (isMouse) {
+	// 			data.style.top = state.menuTop;
+	// 			data.style.left = state.menuLeft;
+	// 		} else {
+	// 			data.style.top += 10;
+	// 			data.style.left += 10;
+	// 		}
+
+	// 		data.id = generateID();
+	// 		commit('addComponent', { component: data });
+	// 		commit('recordSnapshot');
+	// 		state.copyData = null;
+	// 	},
+	// 	cut(state, commit) {
+	// 		if (!state.curComponent) {
+	// 			toast('请选择组件');
+	// 			return;
+	// 		}
+
+	// 		if (state.copyData) {
+	// 			commit('addComponent', { component: state.copyData.data, index: state.copyData.index });
+	// 			if (state.curComponentIndex >= state.copyData.index) {
+	// 				// 如果当前组件索引大于等于插入索引，需要加一，因为当前组件往后移了一位
+	// 				state.curComponentIndex++;
+	// 			}
+	// 		}
+
+	// 		commit('copy');
+	// 		commit('deleteComponent');
+	// 	},
+	// 	undo({ state, commit }) {
+	// 		if (state.snapshotIndex >= 0) {
+	// 			state.snapshotIndex--;
+	// 			console.log('undo', state.snapshotIndex);
+	// 			commit('setComponentData', deepCopy(state.snapshotData[state.snapshotIndex]));
+	// 		}
+	// 	},
+	// 	redo({ state, commit }) {
+	// 		if (state.snapshotIndex < state.snapshotData.length - 1) {
+	// 			state.snapshotIndex++;
+	// 			commit('setComponentData', deepCopy(state.snapshotData[state.snapshotIndex]));
+	// 		}
+	// 	},
+	// },
 	mutations: {
 		copy(state) {
 			state.copyData = {
@@ -79,8 +100,9 @@ export default {
 			}
 
 			data.id = generateID();
-			store.commit('addComponent', { component: data });
-			store.commit('recordSnapshot');
+			// 这里的this是根store对象
+			this.commit('dragDemo/addComponent', { component: data });
+			this.commit('dragDemo/recordSnapshot');
 			state.copyData = null;
 		},
 
@@ -91,15 +113,15 @@ export default {
 			}
 
 			if (state.copyData) {
-				store.commit('addComponent', { component: state.copyData.data, index: state.copyData.index });
+				this.commit('dragDemo/addComponent', { component: state.copyData.data, index: state.copyData.index });
 				if (state.curComponentIndex >= state.copyData.index) {
 					// 如果当前组件索引大于等于插入索引，需要加一，因为当前组件往后移了一位
 					state.curComponentIndex++;
 				}
 			}
 
-			store.commit('copy');
-			store.commit('deleteComponent');
+			this.commit('dragDemo/copy');
+			this.commit('dragDemo/deleteComponent');
 		},
 
 		setEditMode(state, mode) {
@@ -111,6 +133,7 @@ export default {
 		},
 
 		addComponent(state, { component, index }) {
+			console.log(component, index);
 			if (index !== undefined) {
 				state.componentData.splice(index, 0, component);
 			} else {
@@ -138,17 +161,18 @@ export default {
 		undo(state) {
 			if (state.snapshotIndex >= 0) {
 				state.snapshotIndex--;
-				store.commit('setComponentData', deepCopy(state.snapshotData[state.snapshotIndex]));
+				this.commit('dragDemo/setComponentData', deepCopy(state.snapshotData[state.snapshotIndex]));
 			}
 		},
 
 		redo(state) {
 			if (state.snapshotIndex < state.snapshotData.length - 1) {
 				state.snapshotIndex++;
-				store.commit('setComponentData', deepCopy(state.snapshotData[state.snapshotIndex]));
+				this.commit('dragDemo/setComponentData', deepCopy(state.snapshotData[state.snapshotIndex]));
 			}
 		},
 
+		// 解决vue监听不到数组变化的问题
 		setComponentData(state, componentData = []) {
 			Vue.set(state, 'componentData', componentData);
 		},

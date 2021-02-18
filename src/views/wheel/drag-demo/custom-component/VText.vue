@@ -6,8 +6,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
-
 export default {
 	props: {
 		propValue: {
@@ -17,7 +15,14 @@ export default {
 			type: Object,
 		},
 	},
-	computed: mapState(['editMode']),
+	computed: {
+		editMode: {
+			get() {
+				return this.$store.state.dragDemo.editMode;
+			},
+		},
+	},
+	mounted() {},
 	methods: {
 		handleInput(e) {
 			this.$emit('input', this.element, e.target.value);

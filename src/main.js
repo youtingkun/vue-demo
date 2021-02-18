@@ -14,6 +14,7 @@ import '@/styles/index.scss'; // global css
 import drectives from './directive';
 import api from './api/index.js';
 import '@/components/index';
+import '@/views/wheel/drag-demo/custom-component/index'; //注册画布的组件
 
 import i18n from './lang';
 
