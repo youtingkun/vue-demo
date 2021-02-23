@@ -7,10 +7,10 @@ import wheel from './modules/wheel';
 import mock from './modules/mock';
 import css from './modules/css';
 import system from './modules/system';
-import form from './modules/form';
 import testThreejs from './modules/test-threejs';
 import threejsDemo from './modules/threejs-demo';
 import testWebgl from './modules/test-webgl';
+import js from './modules/js';
 
 export const constantRoutes = [
 	{
@@ -90,6 +90,7 @@ export const asyncRoutes = [
 	testThreejs,
 	threejsDemo,
 	testWebgl,
+	js,
 	{
 		path: '/custom-directives',
 		component: Layout,
