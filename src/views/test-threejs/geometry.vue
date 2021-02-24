@@ -20,7 +20,6 @@
 			<el-button @click="handleGeometry('ShapeGeometry')">ShapeGeometry </el-button>
 			<el-button @click="handleGeometry('ExtrudeGeometry')">ExtrudeGeometry </el-button>
 		</div>
-		<div id="c"></div>
 		<canvas id="cc"></canvas>
 	</div>
 </template>

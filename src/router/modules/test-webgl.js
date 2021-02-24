@@ -15,6 +15,14 @@ const testWebgl = {
 				title: 'hello-canvas',
 			},
 		},
+		{
+			path: 'test1',
+			component: () => import('@/views/test-webgl/test1'),
+			name: 'test1',
+			meta: {
+				title: 'test1',
+			},
+		},
 	],
 };
 
