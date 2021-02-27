@@ -12,6 +12,7 @@
 			:default-checked-keys="checkedKeys"
 			@node-click="nodeClick"
 			@check="check"
+			:filter-node-method="filterNode"
 		>
 		</el-tree>
 		<el-button @click="getCheckedNodes">只获取子节点</el-button>
@@ -43,12 +44,18 @@ export default {
 	},
 	watch: {},
 	computed: {},
+	mounted() {},
 	created() {
 		this.$api.system.getRoleTree().then(res => {
 			this.treeData = res.data;
 		});
 	},
 	methods: {
+		filterNode(value, data) {
+			console.log('filterNode', value, data);
+			if (!value) return true;
+			return data.label.indexOf(value) !== -1;
+		},
 		getHalfCheckedKeys() {
 			console.log(this.$refs['roleTree'].getHalfCheckedKeys(true));
 		},
