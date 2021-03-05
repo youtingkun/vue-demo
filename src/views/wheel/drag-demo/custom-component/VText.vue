@@ -1,5 +1,11 @@
 <template>
-	<textarea v-if="editMode == 'edit'" :value="propValue" class="text textarea" @input="handleInput" ref="v-text"></textarea>
+	<textarea
+		v-if="editMode == 'edit'"
+		:value="propValue"
+		class="text textarea"
+		@input="handleInput"
+		ref="v-text"
+	></textarea>
 	<div v-else class="text disabled">
 		<div v-for="(text, index) in propValue.split('\n')" :key="index">{{ text }}</div>
 	</div>

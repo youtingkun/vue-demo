@@ -489,7 +489,9 @@ const mainFcn = function (name) {
 		folder.add(material, 'fog');
 		folder.add(data, 'envMaps', envMapKeys).onChange(updateTexture(material, 'envMap', envMaps));
 		folder.add(data, 'map', diffuseMapKeys).onChange(updateTexture(material, 'map', diffuseMaps));
-		folder.add(data, 'roughnessMap', roughnessMapKeys).onChange(updateTexture(material, 'roughnessMap', roughnessMaps));
+		folder
+			.add(data, 'roughnessMap', roughnessMapKeys)
+			.onChange(updateTexture(material, 'roughnessMap', roughnessMaps));
 		folder.add(data, 'alphaMap', alphaMapKeys).onChange(updateTexture(material, 'alphaMap', alphaMaps));
 
 		// TODO metalnessMap
@@ -522,7 +524,9 @@ const mainFcn = function (name) {
 		folder.add(material, 'fog');
 		folder.add(data, 'envMaps', envMapKeys).onChange(updateTexture(material, 'envMap', envMaps));
 		folder.add(data, 'map', diffuseMapKeys).onChange(updateTexture(material, 'map', diffuseMaps));
-		folder.add(data, 'roughnessMap', roughnessMapKeys).onChange(updateTexture(material, 'roughnessMap', roughnessMaps));
+		folder
+			.add(data, 'roughnessMap', roughnessMapKeys)
+			.onChange(updateTexture(material, 'roughnessMap', roughnessMaps));
 		folder.add(data, 'alphaMap', alphaMapKeys).onChange(updateTexture(material, 'alphaMap', alphaMaps));
 
 		// TODO metalnessMap

@@ -102,7 +102,14 @@ const mainFcn = function (name) {
 			function generateGeometry() {
 				updateGroupGeometry(
 					mesh,
-					new BoxGeometry(data.width, data.height, data.depth, data.widthSegments, data.heightSegments, data.depthSegments),
+					new BoxGeometry(
+						data.width,
+						data.height,
+						data.depth,
+						data.widthSegments,
+						data.heightSegments,
+						data.depthSegments,
+					),
 				);
 			}
 
@@ -208,7 +215,10 @@ const mainFcn = function (name) {
 			};
 
 			function generateGeometry() {
-				updateGroupGeometry(mesh, new CircleGeometry(data.radius, data.segments, data.thetaStart, data.thetaLength));
+				updateGroupGeometry(
+					mesh,
+					new CircleGeometry(data.radius, data.segments, data.thetaStart, data.thetaLength),
+				);
 			}
 
 			const folder = gui.addFolder('THREE.CircleGeometry');
@@ -312,7 +322,10 @@ const mainFcn = function (name) {
 			};
 
 			function generateGeometry() {
-				updateGroupGeometry(mesh, new PlaneGeometry(data.width, data.height, data.widthSegments, data.heightSegments));
+				updateGroupGeometry(
+					mesh,
+					new PlaneGeometry(data.width, data.height, data.widthSegments, data.heightSegments),
+				);
 			}
 
 			const folder = gui.addFolder('THREE.PlaneGeometry');
@@ -338,7 +351,14 @@ const mainFcn = function (name) {
 			function generateGeometry() {
 				updateGroupGeometry(
 					mesh,
-					new RingGeometry(data.innerRadius, data.outerRadius, data.thetaSegments, data.phiSegments, data.thetaStart, data.thetaLength),
+					new RingGeometry(
+						data.innerRadius,
+						data.outerRadius,
+						data.thetaSegments,
+						data.phiSegments,
+						data.thetaStart,
+						data.thetaLength,
+					),
 				);
 			}
 
@@ -432,22 +452,25 @@ const mainFcn = function (name) {
 
 			function generateGeometry() {
 				const loader = new FontLoader();
-				loader.load('three/examples/fonts/' + data.font + '_' + data.weight + '.typeface.json', function (font) {
-					const geometry = new TextGeometry(data.text, {
-						font: font,
-						size: data.size,
-						height: data.height,
-						curveSegments: data.curveSegments,
-						bevelEnabled: data.bevelEnabled,
-						bevelThickness: data.bevelThickness,
-						bevelSize: data.bevelSize,
-						bevelOffset: data.bevelOffset,
-						bevelSegments: data.bevelSegments,
-					});
-					geometry.center();
+				loader.load(
+					'three/examples/fonts/' + data.font + '_' + data.weight + '.typeface.json',
+					function (font) {
+						const geometry = new TextGeometry(data.text, {
+							font: font,
+							size: data.size,
+							height: data.height,
+							curveSegments: data.curveSegments,
+							bevelEnabled: data.bevelEnabled,
+							bevelThickness: data.bevelThickness,
+							bevelSize: data.bevelSize,
+							bevelOffset: data.bevelOffset,
+							bevelSegments: data.bevelSegments,
+						});
+						geometry.center();
 
-					updateGroupGeometry(mesh, geometry);
-				});
+						updateGroupGeometry(mesh, geometry);
+					},
+				);
 			}
 
 			//Hide the wireframe
@@ -480,7 +503,10 @@ const mainFcn = function (name) {
 			};
 
 			function generateGeometry() {
-				updateGroupGeometry(mesh, new TorusGeometry(data.radius, data.tube, data.radialSegments, data.tubularSegments, data.arc));
+				updateGroupGeometry(
+					mesh,
+					new TorusGeometry(data.radius, data.tube, data.radialSegments, data.tubularSegments, data.arc),
+				);
 			}
 
 			const folder = gui.addFolder('THREE.TorusGeometry');
@@ -505,7 +531,17 @@ const mainFcn = function (name) {
 			};
 
 			function generateGeometry() {
-				updateGroupGeometry(mesh, new TorusKnotGeometry(data.radius, data.tube, data.tubularSegments, data.radialSegments, data.p, data.q));
+				updateGroupGeometry(
+					mesh,
+					new TorusKnotGeometry(
+						data.radius,
+						data.tube,
+						data.tubularSegments,
+						data.radialSegments,
+						data.p,
+						data.q,
+					),
+				);
 			}
 
 			const folder = gui.addFolder('THREE.TorusKnotGeometry');
@@ -548,7 +584,10 @@ const mainFcn = function (name) {
 			const path = new CustomSinCurve(10);
 
 			function generateGeometry() {
-				updateGroupGeometry(mesh, new TubeGeometry(path, data.segments, data.radius, data.radialSegments, false));
+				updateGroupGeometry(
+					mesh,
+					new TubeGeometry(path, data.segments, data.radius, data.radialSegments, false),
+				);
 			}
 
 			const folder = gui.addFolder('THREE.TubeGeometry');
@@ -671,7 +710,12 @@ const mainFcn = function (name) {
 	geometry.setAttribute('position', new Float32BufferAttribute([], 3));
 
 	const lineMaterial = new LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.5 });
-	const meshMaterial = new MeshPhongMaterial({ color: 0x156289, emissive: 0x072534, side: DoubleSide, flatShading: true });
+	const meshMaterial = new MeshPhongMaterial({
+		color: 0x156289,
+		emissive: 0x072534,
+		side: DoubleSide,
+		flatShading: true,
+	});
 
 	group.add(new LineSegments(geometry, lineMaterial));
 	group.add(new Mesh(geometry, meshMaterial));

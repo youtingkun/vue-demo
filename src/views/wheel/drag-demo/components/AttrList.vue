@@ -1,12 +1,24 @@
 <template>
 	<div class="attr-list">
 		<el-form>
-			<el-form-item v-for="(key, index) in styleKeys.filter(item => item != 'rotate')" :key="index" :label="map[key]">
+			<el-form-item
+				v-for="(key, index) in styleKeys.filter(item => item != 'rotate')"
+				:key="index"
+				:label="map[key]"
+			>
 				<el-color-picker v-if="key == 'borderColor'" v-model="curComponent.style[key]"></el-color-picker>
 				<el-color-picker v-else-if="key == 'color'" v-model="curComponent.style[key]"></el-color-picker>
-				<el-color-picker v-else-if="key == 'backgroundColor'" v-model="curComponent.style[key]"></el-color-picker>
+				<el-color-picker
+					v-else-if="key == 'backgroundColor'"
+					v-model="curComponent.style[key]"
+				></el-color-picker>
 				<el-select v-else-if="key == 'textAlign'" v-model="curComponent.style[key]">
-					<el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></el-option>
+					<el-option
+						v-for="item in options"
+						:key="item.value"
+						:label="item.label"
+						:value="item.value"
+					></el-option>
 				</el-select>
 				<el-input type="number" v-else v-model="curComponent.style[key]" />
 			</el-form-item>
@@ -57,7 +69,9 @@ export default {
 	},
 	computed: {
 		styleKeys() {
-			return this.$store.state.dragDemo.curComponent ? Object.keys(this.$store.state.dragDemo.curComponent.style) : [];
+			return this.$store.state.dragDemo.curComponent
+				? Object.keys(this.$store.state.dragDemo.curComponent.style)
+				: [];
 		},
 		curComponent() {
 			return this.$store.state.dragDemo.curComponent;

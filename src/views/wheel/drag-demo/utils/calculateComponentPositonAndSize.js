@@ -40,7 +40,9 @@ function calculateTop(style, curPositon, pointInfo) {
 	);
 
 	// 勾股定理
-	const newHeight = Math.sqrt((rotatedTopMiddlePoint.x - symmetricPoint.x) ** 2 + (rotatedTopMiddlePoint.y - symmetricPoint.y) ** 2);
+	const newHeight = Math.sqrt(
+		(rotatedTopMiddlePoint.x - symmetricPoint.x) ** 2 + (rotatedTopMiddlePoint.y - symmetricPoint.y) ** 2,
+	);
 
 	if (newHeight > 0) {
 		const newCenter = {
@@ -66,7 +68,9 @@ function calculateRight(style, curPositon, pointInfo) {
 		style.rotate,
 	);
 
-	const newWidth = Math.sqrt((rotatedRightMiddlePoint.x - symmetricPoint.x) ** 2 + (rotatedRightMiddlePoint.y - symmetricPoint.y) ** 2);
+	const newWidth = Math.sqrt(
+		(rotatedRightMiddlePoint.x - symmetricPoint.x) ** 2 + (rotatedRightMiddlePoint.y - symmetricPoint.y) ** 2,
+	);
 	if (newWidth > 0) {
 		const newCenter = {
 			x: rotatedRightMiddlePoint.x - (rotatedRightMiddlePoint.x - symmetricPoint.x) / 2,
@@ -91,7 +95,9 @@ function calculateBottom(style, curPositon, pointInfo) {
 		style.rotate,
 	);
 
-	const newHeight = Math.sqrt((rotatedBottomMiddlePoint.x - symmetricPoint.x) ** 2 + (rotatedBottomMiddlePoint.y - symmetricPoint.y) ** 2);
+	const newHeight = Math.sqrt(
+		(rotatedBottomMiddlePoint.x - symmetricPoint.x) ** 2 + (rotatedBottomMiddlePoint.y - symmetricPoint.y) ** 2,
+	);
 	if (newHeight > 0) {
 		const newCenter = {
 			x: rotatedBottomMiddlePoint.x - (rotatedBottomMiddlePoint.x - symmetricPoint.x) / 2,
@@ -115,7 +121,9 @@ function calculateLeft(style, curPositon, pointInfo) {
 		style.rotate,
 	);
 
-	const newWidth = Math.sqrt((rotatedLeftMiddlePoint.x - symmetricPoint.x) ** 2 + (rotatedLeftMiddlePoint.y - symmetricPoint.y) ** 2);
+	const newWidth = Math.sqrt(
+		(rotatedLeftMiddlePoint.x - symmetricPoint.x) ** 2 + (rotatedLeftMiddlePoint.y - symmetricPoint.y) ** 2,
+	);
 	if (newWidth > 0) {
 		const newCenter = {
 			x: rotatedLeftMiddlePoint.x - (rotatedLeftMiddlePoint.x - symmetricPoint.x) / 2,

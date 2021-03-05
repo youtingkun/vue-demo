@@ -65,7 +65,11 @@ export default {
 				const sphereRadius = 3;
 				const sphereWidthDivisions = 32;
 				const sphereHeightDivisions = 16;
-				const sphereGeo = new THREE.SphereBufferGeometry(sphereRadius, sphereWidthDivisions, sphereHeightDivisions);
+				const sphereGeo = new THREE.SphereBufferGeometry(
+					sphereRadius,
+					sphereWidthDivisions,
+					sphereHeightDivisions,
+				);
 				const sphereMat = new THREE.MeshStandardMaterial({ color: '#CA8' });
 				const mesh = new THREE.Mesh(sphereGeo, sphereMat);
 				mesh.position.set(-sphereRadius - 1, sphereRadius + 2, 0);
@@ -246,9 +250,15 @@ export default {
 				gui.add(light, 'intensity', 0, 10, 0.01);
 				gui.add(light, 'width', 0, 20).onChange(updateLight);
 				gui.add(light, 'height', 0, 20).onChange(updateLight);
-				gui.add(new DegRadHelper(light.rotation, 'x'), 'value', -180, 180).name('x rotation').onChange(updateLight);
-				gui.add(new DegRadHelper(light.rotation, 'y'), 'value', -180, 180).name('y rotation').onChange(updateLight);
-				gui.add(new DegRadHelper(light.rotation, 'z'), 'value', -180, 180).name('z rotation').onChange(updateLight);
+				gui.add(new DegRadHelper(light.rotation, 'x'), 'value', -180, 180)
+					.name('x rotation')
+					.onChange(updateLight);
+				gui.add(new DegRadHelper(light.rotation, 'y'), 'value', -180, 180)
+					.name('y rotation')
+					.onChange(updateLight);
+				gui.add(new DegRadHelper(light.rotation, 'z'), 'value', -180, 180)
+					.name('z rotation')
+					.onChange(updateLight);
 
 				makeXYZGUI(gui, light.position, 'position', updateLight);
 			}

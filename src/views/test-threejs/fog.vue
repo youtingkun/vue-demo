@@ -104,7 +104,11 @@ export default {
 				return cube;
 			}
 
-			const cubes = [makeInstance(geometry, 0x44aa88, 0), makeInstance(geometry, 0x8844aa, -1), makeInstance(geometry, 0xaa8844, 1)];
+			const cubes = [
+				makeInstance(geometry, 0x44aa88, 0),
+				makeInstance(geometry, 0x8844aa, -1),
+				makeInstance(geometry, 0xaa8844, 1),
+			];
 
 			function resizeRendererToDisplaySize(renderer) {
 				const canvas = renderer.domElement;

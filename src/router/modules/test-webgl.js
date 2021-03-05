@@ -23,6 +23,14 @@ const testWebgl = {
 				title: 'test1',
 			},
 		},
+		{
+			path: 'tree',
+			component: () => import('@/views/test-webgl/tree'),
+			name: 'tree',
+			meta: {
+				title: 'tree',
+			},
+		},
 	],
 };
 

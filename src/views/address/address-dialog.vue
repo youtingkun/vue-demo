@@ -4,7 +4,9 @@
 			<el-form-item label="收货人:" prop="name">
 				<el-input v-model="data.name" placeholder="请填写收货人姓名"></el-input>
 			</el-form-item>
-			<el-form-item label="手机号码:" prop="phone"><el-input v-model="data.phone" placeholder="请填写手机号码"></el-input></el-form-item>
+			<el-form-item label="手机号码:" prop="phone"
+				><el-input v-model="data.phone" placeholder="请填写手机号码"></el-input
+			></el-form-item>
 			<el-form-item label="区域信息:" prop="city">
 				<el-cascader size="large" :options="options" v-model="data.city" @change="handleChange"> </el-cascader>
 			</el-form-item>

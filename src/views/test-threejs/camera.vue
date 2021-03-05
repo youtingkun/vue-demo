@@ -125,7 +125,11 @@ export default {
 				const sphereRadius = 3;
 				const sphereWidthDivisions = 32;
 				const sphereHeightDivisions = 16;
-				const sphereGeo = new THREE.SphereBufferGeometry(sphereRadius, sphereWidthDivisions, sphereHeightDivisions);
+				const sphereGeo = new THREE.SphereBufferGeometry(
+					sphereRadius,
+					sphereWidthDivisions,
+					sphereHeightDivisions,
+				);
 				const sphereMat = new THREE.MeshPhongMaterial({ color: '#CA8' });
 				const mesh = new THREE.Mesh(sphereGeo, sphereMat);
 				mesh.position.set(-sphereRadius - 1, sphereRadius + 2, 0);

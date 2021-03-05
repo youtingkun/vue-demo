@@ -74,7 +74,11 @@ export default {
 				const sphereRadius = 3;
 				const sphereWidthDivisions = 32;
 				const sphereHeightDivisions = 16;
-				const sphereGeo = new THREE.SphereBufferGeometry(sphereRadius, sphereWidthDivisions, sphereHeightDivisions);
+				const sphereGeo = new THREE.SphereBufferGeometry(
+					sphereRadius,
+					sphereWidthDivisions,
+					sphereHeightDivisions,
+				);
 				const sphereMat = new THREE.MeshPhongMaterial({ color: '#CA8' });
 				const mesh = new THREE.Mesh(sphereGeo, sphereMat);
 				mesh.castShadow = true;
@@ -175,8 +179,14 @@ export default {
 				{
 					const folder = gui.addFolder('Shadow Camera');
 					folder.open();
-					folder.add(new DimensionGUIHelper(light.shadow.camera, 'left', 'right'), 'value', 1, 100).name('width').onChange(updateCamera);
-					folder.add(new DimensionGUIHelper(light.shadow.camera, 'bottom', 'top'), 'value', 1, 100).name('height').onChange(updateCamera);
+					folder
+						.add(new DimensionGUIHelper(light.shadow.camera, 'left', 'right'), 'value', 1, 100)
+						.name('width')
+						.onChange(updateCamera);
+					folder
+						.add(new DimensionGUIHelper(light.shadow.camera, 'bottom', 'top'), 'value', 1, 100)
+						.name('height')
+						.onChange(updateCamera);
 					const minMaxGUIHelper = new MinMaxGUIHelper(light.shadow.camera, 'near', 'far', 0.1);
 					folder.add(minMaxGUIHelper, 'min', 0.1, 50, 0.1).name('near').onChange(updateCamera);
 					folder.add(minMaxGUIHelper, 'max', 0.1, 50, 0.1).name('far').onChange(updateCamera);

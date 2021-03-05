@@ -2,8 +2,6 @@
 	<div class=""><canvas id="webgl" width="500" height="500" style="background-color: blue"></canvas></div>
 </template>
 
-
-
 <script>
 export default {
 	name: '',

@@ -1,6 +1,13 @@
 <template>
 	<div class="login-container">
-		<el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left">
+		<el-form
+			ref="loginForm"
+			:model="loginForm"
+			:rules="loginRules"
+			class="login-form"
+			auto-complete="on"
+			label-position="left"
+		>
 			<div class="title-container">
 				<h3 class="title">Login Form</h3>
 			</div>
@@ -40,7 +47,11 @@
 				</span>
 			</el-form-item>
 
-			<el-button :loading="loading" type="primary" style="width: 100%; margin-bottom: 30px" @click.native.prevent="handleLogin"
+			<el-button
+				:loading="loading"
+				type="primary"
+				style="width: 100%; margin-bottom: 30px"
+				@click.native.prevent="handleLogin"
 				>Login</el-button
 			>
 

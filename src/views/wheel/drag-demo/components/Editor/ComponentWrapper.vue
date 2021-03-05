@@ -1,6 +1,11 @@
 <template>
 	<div @click="handleClick">
-		<component class="conponent" :is="config.component" :style="getStyle(config.style)" :propValue="config.propValue" />
+		<component
+			class="conponent"
+			:is="config.component"
+			:style="getStyle(config.style)"
+			:propValue="config.propValue"
+		/>
 	</div>
 </template>
 

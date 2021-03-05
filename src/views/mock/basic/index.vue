@@ -2,13 +2,21 @@
 	<div class="">
 		basic<el-button @click="handleBasic">获取数据</el-button>
 		<el-table :data="basicList">
-			<el-table-column prop="booleanTest" label="布尔值" :formatter="row => JSON.stringify(row.booleanTest)"></el-table-column>
+			<el-table-column
+				prop="booleanTest"
+				label="布尔值"
+				:formatter="row => JSON.stringify(row.booleanTest)"
+			></el-table-column>
 			<el-table-column prop="natural" label="自然数"></el-table-column>
 			<el-table-column prop="integer" label="整数"></el-table-column>
 			<el-table-column prop="float" label="浮点数"></el-table-column>
 			<el-table-column prop="character" label="随机单个字符"></el-table-column>
 			<el-table-column prop="string" label="随机单个字符串"></el-table-column>
-			<el-table-column prop="range" label="长度为10的数组" :formatter="row => JSON.stringify(row.range)"></el-table-column>
+			<el-table-column
+				prop="range"
+				label="长度为10的数组"
+				:formatter="row => JSON.stringify(row.range)"
+			></el-table-column>
 		</el-table>
 		date
 		<el-table :data="basicList">

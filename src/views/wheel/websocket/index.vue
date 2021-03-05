@@ -2,7 +2,12 @@
 	<div>
 		<form onsubmit="return false;">
 			<h3>WebSocket 聊天室：</h3>
-			<el-input type="textarea" id="responseText" v-model="textValue" :autosize="{ minRows: 3, maxRows: 100 }"></el-input>
+			<el-input
+				type="textarea"
+				id="responseText"
+				v-model="textValue"
+				:autosize="{ minRows: 3, maxRows: 100 }"
+			></el-input>
 			<br />
 			<el-input type="text" style="width: 300px" value="Welcome to waylau.com" v-model="message" />
 			<el-button @click="send()">发送消息</el-button>

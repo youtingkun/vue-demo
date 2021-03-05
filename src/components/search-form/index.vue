@@ -4,12 +4,22 @@
 			<el-form-item :key="item.key" v-for="item in searchFormConfig" :label="item.label">
 				<el-input v-if="item.el === 'input-text'" placeholder="请输入" v-model.trim="item.key"> </el-input>
 				<el-checkbox-group v-if="item.el === 'checkbox-group'" v-model.trim="item.key">
-					<el-checkbox v-for="checkboxItem in item.list" :key="checkboxItem.key" :value="checkboxItem.key" :label="checkboxItem.label">
+					<el-checkbox
+						v-for="checkboxItem in item.list"
+						:key="checkboxItem.key"
+						:value="checkboxItem.key"
+						:label="checkboxItem.label"
+					>
 						{{ checkboxItem.label }}
 					</el-checkbox>
 				</el-checkbox-group>
 				<el-select v-if="item.el === 'select'" v-model="item.value">
-					<el-option v-for="selectItem in item.list" :key="selectItem.value" :label="selectItem.label" :value="selectItem.value">
+					<el-option
+						v-for="selectItem in item.list"
+						:key="selectItem.value"
+						:label="selectItem.label"
+						:value="selectItem.value"
+					>
 					</el-option>
 				</el-select>
 			</el-form-item>

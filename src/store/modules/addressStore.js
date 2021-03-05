@@ -2,7 +2,14 @@ export default {
 	namespaced: true,
 	state: {
 		addressList: [
-			{ id: '1', name: '张三', phone: '18580745503', city: ['110000', '110100', '110101'], address: '某某小区', post: '400805' },
+			{
+				id: '1',
+				name: '张三',
+				phone: '18580745503',
+				city: ['110000', '110100', '110101'],
+				address: '某某小区',
+				post: '400805',
+			},
 			{
 				id: '2',
 				name: '张四',
@@ -11,7 +18,14 @@ export default {
 				address: '某某小区',
 				post: '400805',
 			},
-			{ id: '3', name: '张五', phone: '18580745503', city: ['110000', '110100', '110101'], address: '某某小区', post: '400805' },
+			{
+				id: '3',
+				name: '张五',
+				phone: '18580745503',
+				city: ['110000', '110100', '110101'],
+				address: '某某小区',
+				post: '400805',
+			},
 		],
 	},
 	actions: {},

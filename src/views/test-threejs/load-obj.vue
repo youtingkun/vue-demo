@@ -77,14 +77,20 @@ export default {
 
 			{
 				const mtlLoader = new MTLLoader();
-				mtlLoader.load('https://threejsfundamentals.org/threejs/resources/models/windmill/windmill.mtl', mtl => {
-					mtl.preload();
-					const objLoader = new OBJLoader();
-					objLoader.setMaterials(mtl);
-					objLoader.load('https://threejsfundamentals.org/threejs/resources/models/windmill/windmill.obj', root => {
-						scene.add(root);
-					});
-				});
+				mtlLoader.load(
+					'https://threejsfundamentals.org/threejs/resources/models/windmill/windmill.mtl',
+					mtl => {
+						mtl.preload();
+						const objLoader = new OBJLoader();
+						objLoader.setMaterials(mtl);
+						objLoader.load(
+							'https://threejsfundamentals.org/threejs/resources/models/windmill/windmill.obj',
+							root => {
+								scene.add(root);
+							},
+						);
+					},
+				);
 			}
 
 			function resizeRendererToDisplaySize(renderer) {

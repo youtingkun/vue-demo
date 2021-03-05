@@ -7,14 +7,22 @@
 				</el-form-item>
 				<el-form-item label="选择">
 					<el-select v-model="searchForm.select" placeholder="请选择" clearable>
-						<el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"> </el-option>
+						<el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+						</el-option>
 					</el-select>
 				</el-form-item>
 				<el-form-item label="时间" prop="time">
-					<el-date-picker v-model="searchForm.time" type="daterange" value-format="yyyy-MM-dd" placeholder="请选择" />
+					<el-date-picker
+						v-model="searchForm.time"
+						type="daterange"
+						value-format="yyyy-MM-dd"
+						placeholder="请选择"
+					/>
 				</el-form-item>
 				<el-button type="primary" icon="el-icon-search" @click="handleSearch">搜索</el-button>
-				<el-button type="primary" icon="el-icon-refresh-right" @click="handleReset('searchForm')">重置</el-button>
+				<el-button type="primary" icon="el-icon-refresh-right" @click="handleReset('searchForm')"
+					>重置</el-button
+				>
 			</el-form>
 		</el-card>
 		<el-card shadow="never">

@@ -1,5 +1,5 @@
 export default function getStyle(style, filter = []) {
-	const needUnit = ['fontSize', 'width', 'height', 'top', 'left', 'borderWidth', 'letterSpacing', 'borderRadius'];
+	const needUnit = [' fontSize ', 'width', 'height', 'top', 'left', 'borderWidth', 'letterSpacing', 'borderRadius'];
 
 	const result = {};
 	Object.keys(style).forEach(key => {

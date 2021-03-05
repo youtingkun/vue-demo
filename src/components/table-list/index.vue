@@ -2,7 +2,8 @@
 	<div class="">
 		<el-button type="primary" icon="el-icon-plus" @click="handleCreate()">新增</el-button>
 		<el-table :data="tableData">
-			<el-table-column v-for="item in tableHeader" :key="item.key" :label="item.lable" :prop="item.key"> </el-table-column>
+			<el-table-column v-for="item in tableHeader" :key="item.key" :label="item.lable" :prop="item.key">
+			</el-table-column>
 			<el-table-column fixed="right" label="操作" width="180">
 				<template slot-scope="scope">
 					<el-button @click="handleRead(scope.row)" type="text" size="small">查看</el-button>

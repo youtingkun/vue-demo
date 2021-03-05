@@ -117,7 +117,10 @@ export default {
 						},
 						{
 							// 组件与拖拽节点的中间是否对齐
-							isNearly: this.isNearly(curComponentStyle.top + curComponentHalfHeight, top + componentHalfHeight),
+							isNearly: this.isNearly(
+								curComponentStyle.top + curComponentHalfHeight,
+								top + componentHalfHeight,
+							),
 							lineNode: lines.xc[0], // xc
 							line: 'xc',
 							dragShift: top + componentHalfHeight - curComponentHalfHeight,
@@ -155,7 +158,10 @@ export default {
 						},
 						{
 							// 组件与拖拽节点的中间是否对齐
-							isNearly: this.isNearly(curComponentStyle.left + curComponentHalfwidth, left + componentHalfwidth),
+							isNearly: this.isNearly(
+								curComponentStyle.left + curComponentHalfwidth,
+								left + componentHalfwidth,
+							),
 							lineNode: lines.yc[0], // yc
 							line: 'yc',
 							dragShift: left + componentHalfwidth - curComponentHalfwidth,
@@ -187,7 +193,10 @@ export default {
 						// 修改当前组件位移
 						this.$store.commit('dragDemo/setShapePosStyle', {
 							key,
-							value: rotate != 0 ? this.translatecurComponentShift(key, condition, curComponentStyle) : condition.dragShift,
+							value:
+								rotate != 0
+									? this.translatecurComponentShift(key, condition, curComponentStyle)
+									: condition.dragShift,
 						});
 
 						condition.lineNode.style[key] = `${condition.lineShift}px`;

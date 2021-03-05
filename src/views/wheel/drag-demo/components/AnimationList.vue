@@ -4,7 +4,12 @@
 			<el-button @click="isShowAnimation = true">添加动画</el-button>
 			<el-button @click="previewAnimate">预览动画</el-button>
 			<div>
-				<el-tag v-for="(tag, index) in curComponent.animations" :key="index" closable @close="removeAnimation(index)">
+				<el-tag
+					v-for="(tag, index) in curComponent.animations"
+					:key="index"
+					closable
+					@close="removeAnimation(index)"
+				>
 					{{ tag.label }}
 				</el-tag>
 			</div>
@@ -13,7 +18,12 @@
 		<!-- 选择动画 -->
 		<Modal v-model="isShowAnimation">
 			<el-tabs v-model="animationActiveName">
-				<el-tab-pane v-for="item in animationClassData" :key="item.label" :label="item.label" :name="item.label">
+				<el-tab-pane
+					v-for="item in animationClassData"
+					:key="item.label"
+					:label="item.label"
+					:name="item.label"
+				>
 					<el-scrollbar class="animate-container">
 						<div
 							class="animate"
