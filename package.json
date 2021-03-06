@@ -21,6 +21,7 @@
 		"mockjs": "^1.1.0",
 		"nprogress": "^0.2.0",
 		"path-to-regexp": "^6.2.0",
+		"roughjs": "^4.3.1",
 		"sass-loader": "^10.0.1",
 		"stats": "^1.0.0",
 		"stats.js": "^0.17.0",
