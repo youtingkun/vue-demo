@@ -1,76 +1,48 @@
-class Vector2D extends Array {
-	constructor(x = 1, y = 0) {
-		super(x, y);
-	}
-
-	set x(v) {
-		this[0] = v;
-	}
-
-	set y(v) {
-		this[1] = v;
-	}
-
-	get x() {
-		return this[0];
-	}
-
-	get y() {
-		return this[1];
-	}
-
-	get length() {
-		return Math.hypot(this.x, this.y);
-	}
-
-	get dir() {
-		return Math.atan2(this.y, this.x);
-	}
-
-	copy() {
-		return new Vector2D(this.x, this.y);
-	}
-
-	add(v) {
-		this.x += v.x;
-		this.y += v.y;
-		return this;
-	}
-
-	sub(v) {
-		this.x -= v.x;
-		this.y -= v.y;
-		return this;
-	}
-
-	scale(a) {
-		this.x *= a;
-		this.y *= a;
-		return this;
-	}
-
-	cross(v) {
-		return this.x * v.y - v.x * this.y;
-	}
-
-	dot(v) {
-		return this.x * v.x + v.y * this.y;
-	}
-
-	normalize() {
-		return this.scale(1 / this.length);
-	}
-
-	rotate(rad) {
-		const c = Math.cos(rad),
-			s = Math.sin(rad);
-		const [x, y] = this;
-
-		this.x = x * c + y * -s;
-		this.y = x * s + y * c;
-
-		return this;
-	}
+// 异步加载图片
+export function loadImage(src) {
+	const img = new Image();
+	img.crossOrigin = 'anonymous';
+	return new Promise(resolve => {
+		img.onload = () => {
+			resolve(img);
+		};
+		img.src = src;
+	});
 }
 
-export default Vector2D;
+const imageDataContext = new WeakMap();
+// 获得图片的 imageData 数据
+export function getImageData(img, rect = [0, 0, img.width, img.height]) {
+	let context;
+	if (imageDataContext.has(img)) context = imageDataContext.get(img);
+	else {
+		const canvas = new OffscreenCanvas(img.width, img.height);
+		context = canvas.getContext('2d');
+		context.drawImage(img, 0, 0);
+		imageDataContext.set(img, context);
+	}
+	return context.getImageData(...rect);
+}
+
+// 循环遍历 imageData 数据
+export function traverse(imageData, pass) {
+	const { width, height, data } = imageData;
+	for (let i = 0; i < width * height * 4; i += 4) {
+		const [r, g, b, a] = pass({
+			r: data[i] / 255,
+			g: data[i + 1] / 255,
+			b: data[i + 2] / 255,
+			a: data[i + 3] / 255,
+			index: i,
+			width,
+			height,
+			x: ((i / 4) % width) / width,
+			y: Math.floor(i / 4 / width) / height,
+		});
+		data.set(
+			[r, g, b, a].map(v => Math.round(v * 255)),
+			i,
+		);
+	}
+	return imageData;
+}

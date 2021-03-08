@@ -17,6 +17,7 @@
 		"element-china-area-data": "^5.0.1",
 		"element-ui": "^2.13.2",
 		"eslint-plugin-html": "^6.1.1",
+		"gl-renderer": "^0.13.6",
 		"js-cookie": "^2.2.1",
 		"mockjs": "^1.1.0",
 		"nprogress": "^0.2.0",
