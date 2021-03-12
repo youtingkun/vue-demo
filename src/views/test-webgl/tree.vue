@@ -1,6 +1,7 @@
 <template>
 	<div>
 		<!-- 给canvas直接设置宽高是为了用于内部的坐标计算，而style的宽高决定最后画布显示的大小 -->
+		<canvas id="equation" width="512" height="512" style="width: 512px; height: 512px"></canvas>
 		<canvas id="paper" width="512" height="256" style="width: 512px; height: 256px"></canvas>
 		<canvas id="one" width="512" height="256" style="width: 512px; height: 256px"></canvas>
 		<canvas id="tree" width="512" height="512" style="width: 512px; height: 512px"></canvas>
@@ -12,7 +13,7 @@
 import rough from 'roughjs/bundled/rough.esm.js';
 import Vector2D from './js/Vector2D.js';
 import GlRenderer from 'gl-renderer';
-import { loadImage, getImageData, traverse } from './js/utils.js';
+import { loadImage, getImageData, traverse, parametric } from './js/utils.js';
 export default {
 	name: '',
 	data() {
@@ -22,10 +23,79 @@ export default {
 		this.drawRelateve();
 		// this.drawAbsolute();
 		this.drawTree();
-		this.drawReplay();
+		// this.drawReplay();
 		this.drawPaper();
+		this.drawEquation();
 	},
 	methods: {
+		drawEquation() {
+			const canvas = document.querySelector('#equation');
+			const ctx = canvas.getContext('2d');
+			const { width, height } = canvas;
+			const w = 0.5 * width,
+				h = 0.5 * height;
+			ctx.translate(w, h);
+			ctx.scale(1, -1);
+			// 画坐标轴
+			ctx.save();
+			ctx.strokeStyle = '#ccc';
+			ctx.beginPath();
+			ctx.moveTo(-w, 0);
+			ctx.lineTo(w, 0);
+			ctx.stroke();
+			ctx.beginPath();
+			ctx.moveTo(0, -h);
+			ctx.lineTo(0, h);
+			ctx.stroke();
+			ctx.restore();
+			this.star(ctx);
+			this.helical(ctx);
+			this.para(ctx);
+			this.quadricBezier(ctx);
+		},
+		star(ctx) {
+			const star = parametric(
+				(t, l) => l * Math.cos(t) ** 3,
+				(t, l) => l * Math.sin(t) ** 3,
+			);
+
+			star(0, Math.PI * 2, 50, 150).draw(ctx, { strokeStyle: 'red' });
+		},
+		// 二阶贝塞尔曲线
+		quadricBezier(ctx) {
+			const quadricBezier = parametric(
+				(t, [{ x: x0 }, { x: x1 }, { x: x2 }]) => (1 - t) ** 2 * x0 + 2 * t * (1 - t) * x1 + t ** 2 * x2,
+				(t, [{ y: y0 }, { y: y1 }, { y: y2 }]) => (1 - t) ** 2 * y0 + 2 * t * (1 - t) * y1 + t ** 2 * y2,
+			);
+
+			const p0 = new Vector2D(0, 0);
+			const p1 = new Vector2D(100, 0);
+			p1.rotate(0.75);
+			const p2 = new Vector2D(200, 0);
+			const count = 30;
+			for (let i = 0; i < count; i++) {
+				// 绘制30条从圆心出发，旋转不同角度的二阶贝塞尔曲线
+				p1.rotate((2 / count) * Math.PI);
+				p2.rotate((2 / count) * Math.PI);
+				quadricBezier(0, 1, 100, [p0, p1, p2]).draw(ctx);
+			}
+		},
+		// 画抛物线
+		para(ctx) {
+			const para = parametric(
+				t => 25 * t,
+				t => 25 * t ** 2,
+			);
+			para(-5.5, 5.5).draw(ctx);
+		},
+		helical(ctx) {
+			const helical = parametric(
+				(t, l) => l * t * Math.cos(t),
+				(t, l) => l * t * Math.sin(t),
+			);
+
+			helical(0, 50, 500, 5).draw(ctx, { strokeStyle: 'blue' });
+		},
 		async drawPaper() {
 			const canvas = document.getElementById('paper');
 			const context = canvas.getContext('2d');

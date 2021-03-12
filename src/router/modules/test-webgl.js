@@ -31,6 +31,14 @@ const testWebgl = {
 				title: 'tree',
 			},
 		},
+		{
+			path: 'earth',
+			component: () => import('@/views/test-webgl/earth'),
+			name: 'earth',
+			meta: {
+				title: 'earth',
+			},
+		},
 	],
 };
 
