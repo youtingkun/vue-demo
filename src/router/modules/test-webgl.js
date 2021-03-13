@@ -39,6 +39,14 @@ const testWebgl = {
 				title: 'earth',
 			},
 		},
+		{
+			path: 'earth-threeJs',
+			component: () => import('@/views/test-webgl/earth-threeJs'),
+			name: 'earth-threeJs',
+			meta: {
+				title: 'earth-threeJs',
+			},
+		},
 	],
 };
 

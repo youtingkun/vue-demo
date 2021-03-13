@@ -1,5 +1,6 @@
 <template>
 	<div>
+		<div>{{ count }}</div>
 		<form @submit.prevent="submit" class="vld-parent" ref="formContainer">
 			<!-- your form inputs goes here-->
 			<label><input type="checkbox" v-model="fullPage" />Full page?</label>
@@ -24,9 +25,15 @@ export default {
 			aesData: { a: 1, b: 2 },
 			encryptData: '',
 			decryptData: '',
+			count: 0,
 		};
 	},
-	mounted() {},
+	mounted() {
+		let _this = this;
+		requestAnimationFrame(function () {
+			_this.count++;
+		});
+	},
 	methods: {
 		testNpmPackage() {
 			const my = new npmDemo();
