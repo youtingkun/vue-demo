@@ -1,6 +1,7 @@
 <template>
 	<div>
 		<!-- 给canvas直接设置宽高是为了用于内部的坐标计算，而style的宽高决定最后画布显示的大小 -->
+		<canvas id="polygon" width="512" height="512" style="width: 512px; height: 512px"></canvas>
 		<canvas id="equation" width="512" height="512" style="width: 512px; height: 512px"></canvas>
 		<canvas id="paper" width="512" height="256" style="width: 512px; height: 256px"></canvas>
 		<canvas id="one" width="512" height="256" style="width: 512px; height: 256px"></canvas>
@@ -26,8 +27,49 @@ export default {
 		// this.drawReplay();
 		this.drawPaper();
 		this.drawEquation();
+		this.drawPolygon();
 	},
 	methods: {
+		drawPolygon() {
+			const canvas = document.querySelector('#polygon');
+			const ctx = canvas.getContext('2d');
+			const { width, height } = canvas;
+			// 改变坐标原点到画布中心
+			ctx.translate(0.25 * width, 0.5 * height);
+			// 翻转canvas的y轴，使之和一般坐标轴一样向上
+			ctx.scale(1, -1);
+			// 起始点
+			const points = [new Vector2D(0, 100)];
+			// 依次旋转起始点
+			for (let i = 1; i <= 4; i++) {
+				const p = points[0].copy().rotate(i * Math.PI * 0.4);
+				points.push(p);
+			}
+			const polygon = [...points];
+			// 绘制正五边形
+			ctx.save();
+			this.draw(ctx, polygon);
+			ctx.restore();
+
+			const stars = [points[0], points[2], points[4], points[1], points[3]];
+
+			// 绘制正五角星
+			ctx.save();
+			ctx.translate(256, 0);
+			this.draw(ctx, stars);
+			ctx.restore();
+		},
+
+		draw(context, points, { fillStyle = 'black', close = false, rule = 'nonzero' } = {}) {
+			context.beginPath();
+			context.moveTo(...points[0]);
+			for (let i = 1; i < points.length; i++) {
+				context.lineTo(...points[i]);
+			}
+			if (close) context.closePath();
+			context.fillStyle = fillStyle;
+			context.fill(rule);
+		},
 		drawEquation() {
 			const canvas = document.querySelector('#equation');
 			const ctx = canvas.getContext('2d');
