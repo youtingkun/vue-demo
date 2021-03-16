@@ -1,6 +1,7 @@
 <template>
 	<div>
 		<!-- 给canvas直接设置宽高是为了用于内部的坐标计算，而style的宽高决定最后画布显示的大小 -->
+		<canvas id="particles" width="512" height="512" style="width: 512px; height: 512px"></canvas>
 		<canvas id="polygon" width="512" height="512" style="width: 512px; height: 512px"></canvas>
 		<canvas id="equation" width="512" height="512" style="width: 512px; height: 512px"></canvas>
 		<canvas id="paper" width="512" height="256" style="width: 512px; height: 256px"></canvas>
@@ -14,6 +15,7 @@
 import rough from 'roughjs/bundled/rough.esm.js';
 import Vector2D from './js/Vector2D.js';
 import GlRenderer from 'gl-renderer';
+import tree from './tree.js';
 import { loadImage, getImageData, traverse, parametric } from './js/utils.js';
 export default {
 	name: '',
@@ -28,8 +30,12 @@ export default {
 		this.drawPaper();
 		this.drawEquation();
 		this.drawPolygon();
+		this.drawParticles();
 	},
 	methods: {
+		drawParticles() {
+			tree.drawParticles();
+		},
 		drawPolygon() {
 			const canvas = document.querySelector('#polygon');
 			const ctx = canvas.getContext('2d');
