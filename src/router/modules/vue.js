@@ -22,6 +22,22 @@ const vue = {
 				title: 'vModel',
 			},
 		},
+		{
+			path: 'component-one',
+			name: 'component-one',
+			component: () => import('@/views/vue/life-cycle/component-one'),
+			meta: {
+				title: 'component-one',
+			},
+		},
+		{
+			path: 'component-two',
+			name: 'component-two',
+			component: () => import('@/views/vue/life-cycle/component-two'),
+			meta: {
+				title: 'component-two',
+			},
+		},
 	],
 };
 

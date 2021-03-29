@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div>{{ count }}</div>
+		<div>{{ count }}obj:{{ obj.a }}</div>
 		<form @submit.prevent="submit" class="vld-parent" ref="formContainer">
 			<!-- your form inputs goes here-->
 			<label><input type="checkbox" v-model="fullPage" />Full page?</label>
@@ -18,6 +18,7 @@
 <script>
 import crypto from '@/utils/crypto';
 import npmDemo from 'ytk-utils';
+import moment from 'moment';
 export default {
 	data() {
 		return {
@@ -26,15 +27,45 @@ export default {
 			encryptData: '',
 			decryptData: '',
 			count: 0,
+			obj: {},
 		};
 	},
+	beforeCreate() {},
+	beforeDestroy() {},
 	mounted() {
 		let _this = this;
 		requestAnimationFrame(function () {
 			_this.count++;
 		});
+		console.log(
+			this.overdueDay(
+				moment('2021-03-28T23:46:17.000+0000').valueOf(),
+				moment('2021-03-29T04:35:07.000+0000').valueOf(),
+				2,
+			),
+		);
 	},
 	methods: {
+		overdueDay(shouldBackTime, lastBackTime, status) {
+			let lastTime,
+				firstTime = shouldBackTime;
+			if (lastBackTime && (status === 6 || status === 22 || status === 8)) {
+				lastTime = lastBackTime;
+				console.log('已还');
+			} else {
+				console.log('未还');
+				lastTime = new Date().getTime();
+			}
+
+			const lastDay = this.timeToDay(lastTime);
+			const firstDay = this.timeToDay(firstTime);
+			debugger;
+			return this.timeToDay(lastTime) - this.timeToDay(firstTime);
+		},
+
+		timeToDay(time) {
+			return parseInt(time / (24 * 60 * 60 * 1000));
+		},
 		testNpmPackage() {
 			const my = new npmDemo();
 			my.f1();
