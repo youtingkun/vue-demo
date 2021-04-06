@@ -1,8 +1,8 @@
 <template>
-	<div>
+	<div id="tree-c">
 		<!-- 给canvas直接设置宽高是为了用于内部的坐标计算，而style的宽高决定最后画布显示的大小 -->
 		<canvas id="particles" width="512" height="512" style="width: 512px; height: 512px"></canvas>
-		<canvas id="polygon" width="512" height="512" style="width: 512px; height: 512px"></canvas>
+		<!-- <canvas id="polygon" width="512" height="512" style="width: 512px; height: 512px"></canvas> -->
 		<canvas id="equation" width="512" height="512" style="width: 512px; height: 512px"></canvas>
 		<canvas id="paper" width="512" height="256" style="width: 512px; height: 256px"></canvas>
 		<canvas id="one" width="512" height="256" style="width: 512px; height: 256px"></canvas>
@@ -24,13 +24,13 @@ export default {
 	},
 	mounted() {
 		this.drawRelateve();
-		// this.drawAbsolute();
+		this.drawAbsolute();
 		this.drawTree();
 		// this.drawReplay();
 		this.drawPaper();
 		this.drawEquation();
-		this.drawPolygon();
-		this.drawParticles();
+		// this.drawPolygon();
+		// this.drawParticles();
 	},
 	methods: {
 		drawParticles() {
@@ -353,4 +353,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+#tree-c {
+	padding: 20px;
+}
+</style>

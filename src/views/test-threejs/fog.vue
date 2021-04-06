@@ -23,7 +23,7 @@ export default {
 		function main() {
 			const canvas = document.querySelector('#c');
 			const renderer = new THREE.WebGLRenderer({ canvas });
-			const gui = new GUI();
+			// const gui = new GUI();
 
 			const fov = 75;
 			const aspect = 2; // the canvas default
@@ -75,9 +75,9 @@ export default {
 				scene.background = new THREE.Color(color);
 
 				const fogGUIHelper = new FogGUIHelper(scene.fog, scene.background);
-				gui.add(fogGUIHelper, 'near', near, far).listen();
-				gui.add(fogGUIHelper, 'far', near, far).listen();
-				gui.addColor(fogGUIHelper, 'color');
+				// gui.add(fogGUIHelper, 'near', near, far).listen();
+				// gui.add(fogGUIHelper, 'far', near, far).listen();
+				// gui.addColor(fogGUIHelper, 'color');
 			}
 
 			{
