@@ -38,6 +38,22 @@ const wheel = {
 				title: 'websocket',
 			},
 		},
+		{
+			path: 'websocket',
+			component: () => import('@/views/wheel/websocket'),
+			name: 'websocket',
+			meta: {
+				title: 'websocket',
+			},
+		},
+		{
+			path: 'static-demo',
+			component: () => import('@/views/wheel/static-demo'),
+			name: 'static-demo',
+			meta: {
+				title: 'static-demo',
+			},
+		},
 	],
 };
 
