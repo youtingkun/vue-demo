@@ -10,6 +10,9 @@
 	},
 	"dependencies": {
 		"@babel/polyfill": "^7.12.1",
+		"@eva/eva.js": "^1.0.4",
+		"@eva/plugin-renderer": "^1.0.4",
+		"@eva/plugin-renderer-img": "^1.0.4",
 		"axios": "^0.21.0",
 		"core-js": "^3.6.5",
 		"crypto-js": "^4.0.0",

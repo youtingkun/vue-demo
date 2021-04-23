@@ -12,6 +12,10 @@
 		<el-button @click="encryptDataF">加密数据</el-button>
 		<el-button @click="testNpmPackage">testMyNpm</el-button>
 		<lang-select></lang-select>
+		<div class="box">
+			<div class="z-demo">123</div>
+		</div>
+		<canvas id="canvas"></canvas>
 	</div>
 </template>
 
@@ -19,6 +23,9 @@
 import crypto from '@/utils/crypto';
 import npmDemo from 'ytk-utils';
 import moment from 'moment';
+import { Game, GameObject, resource, RESOURCE_TYPE } from '@eva/eva.js';
+import { RendererSystem } from '@eva/plugin-renderer';
+import { Img, ImgSystem } from '@eva/plugin-renderer-img';
 export default {
 	data() {
 		return {
@@ -44,8 +51,56 @@ export default {
 				2,
 			),
 		);
+		this.evaRender();
 	},
 	methods: {
+		evaRender() {
+			resource.addResource([
+				{
+					name: 'imageName',
+					type: RESOURCE_TYPE.IMAGE,
+					src: {
+						image: {
+							type: 'png',
+							url: 'https://gw.alicdn.com/tfs/TB1DNzoOvb2gK0jSZK9XXaEgFXa-658-1152.webp',
+						},
+					},
+					preload: true,
+				},
+			]);
+
+			const game = new Game({
+				systems: [
+					new RendererSystem({
+						canvas: document.querySelector('#canvas'),
+						width: 750,
+						height: 1000,
+					}),
+					new ImgSystem(),
+				],
+			});
+
+			const image = new GameObject('image', {
+				size: { width: 750, height: 1319 },
+				origin: { x: 0, y: 0 },
+				position: {
+					x: 0,
+					y: -319,
+				},
+				anchor: {
+					x: 0,
+					y: 0,
+				},
+			});
+
+			image.addComponent(
+				new Img({
+					resource: 'imageName',
+				}),
+			);
+
+			game.scene.addChild(image);
+		},
 		overdueDay(shouldBackTime, lastBackTime, status) {
 			let lastTime,
 				firstTime = shouldBackTime;
@@ -59,7 +114,6 @@ export default {
 
 			const lastDay = this.timeToDay(lastTime);
 			const firstDay = this.timeToDay(firstTime);
-			debugger;
 			return this.timeToDay(lastTime) - this.timeToDay(firstTime);
 		},
 
@@ -95,3 +149,12 @@ export default {
 	},
 };
 </script>
+
+<style scoped>
+.box {
+	background-color: aquamarine;
+}
+.z-demo {
+	z-index: -1;
+}
+</style>
