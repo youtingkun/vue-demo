@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // 交换
+        function swap(array, i, j) {
+            let temp = array[i];
+            array[i] = array[j];
+            array[j] = temp; 
+        };
+
+        /**
+         * @description: 从右至左,从下至上构建成一个大根堆
+         * @param {*} array
+         * @param {*} index 数组下标值
+         * @return {*}
+         */         
+        function buildHeap(array,index){
+            // 第一个非叶子结点的下标构建
+            for(let i = Math.floor((index+1)/2-1);i >=0;i--){
+                maxHeapify(array,i,index);
+            }
+        };
+        /**
+         * @description: 根据给定的下标，构建大根堆
+         * @param {*} array 数组
+         * @param {*} i
+         * @param {*} index 数组下标值
+         * @return {*}
+         */        
+        function maxHeapify(array, i, index) {
+            let l = 2 * i + 1;// 左子节点下标2i+1
+            let r = 2 * i + 2; // 右子节点下标2i+2
+            let maxIndex = i; // 最大值
+            // 若左子节点比节点大
+            if (l <= index && array[l] > array[maxIndex]) {
+                maxIndex = l;
+            }
+             // 若右子节点比节点大
+            if (r <= index && array[r] > array[maxIndex]) {
+                maxIndex = r;
+            }
+            // 若最大值有改变，则交换父子位置，并递归计算子节点
+            if (maxIndex !== i) {
+                swap(array, i, maxIndex);
+                maxHeapify(array,maxIndex,index)
+            }
+        };
+        function heapSort(array){
+            for(let i = 1; i < array.length; i ++) {//每运行一次，将需要排序的数组长度减一
+                buildHeap(array,array.length-i);//构建大根堆
+                swap(array,0,array.length-i);//首项和尾项交换
+               
+            }
+        };
+        let a = [1,4,3,8,9,5,6];
+        let b = heapSort(a);
+       
+      
+        
+    </script>
+</body>
+</html>

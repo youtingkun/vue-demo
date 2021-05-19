@@ -5,9 +5,9 @@
 		<div style="width: 240px; height: 300px">{{ i18nHello }}</div>
 		<ytk-button></ytk-button>
 
-		<el-table :data="addressList" class="">
-			<el-table-column prop="name" label="收货人"> </el-table-column>
-			<el-table-column prop="phone" label="手机号码"></el-table-column>
+		<el-table :data="addressList" class="" @sort-change="handleSortChange">
+			<el-table-column prop="name" label="收货人" sortable="custom"> </el-table-column>
+			<el-table-column prop="phone" label="手机号码" sortable="custom"></el-table-column>
 			<el-table-column prop="city" :formatter="formatter" label="区域信息"></el-table-column>
 			<el-table-column prop="address" label="详细地址"></el-table-column>
 			<el-table-column prop="post" label="邮政编码"></el-table-column>
@@ -56,6 +56,9 @@ export default {
 	},
 	watch: {},
 	methods: {
+		handleSortChange(column, prop, order) {
+			console.log(column, prop, order);
+		},
 		formatter(row) {
 			let text = '';
 			row.city.map(item => {
