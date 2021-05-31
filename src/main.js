@@ -2,8 +2,6 @@ import Vue from 'vue';
 import App from './App.vue';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-import YTKVueComponents from 'ytk-vue-components';
-import 'ytk-vue-components/lib/ytk-vue-components.css';
 import router from './router';
 import store from './store';
 import '@/icons';
@@ -31,7 +29,6 @@ Vue.prototype.$api = api;
 Vue.use(ElementUI, {
 	i18n: (key, value) => i18n.t(key, value),
 });
-Vue.use(YTKVueComponents);
 
 new Vue({
 	i18n,

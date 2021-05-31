@@ -48,9 +48,6 @@ export const constantRoutes = [
 			},
 		],
 	},
-];
-
-export const asyncRoutes = [
 	{
 		path: '/form',
 		component: Layout,
@@ -107,6 +104,8 @@ export const asyncRoutes = [
 	},
 	{ path: '*', redirect: '/404', hidden: true },
 ];
+
+export const asyncRoutes = [];
 
 const routes = { constantRoutes, asyncRoutes };
 

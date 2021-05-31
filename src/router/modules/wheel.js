@@ -7,6 +7,14 @@ const wheel = {
 	},
 	children: [
 		{
+			path: 'preview-word',
+			component: () => import('@/views/wheel/preview-word'),
+			name: 'preview-word',
+			meta: {
+				title: 'preview-word',
+			},
+		},
+		{
 			path: 'drag-demo',
 			component: () => import('@/views/wheel/drag-demo'),
 			name: 'drag-demo',
