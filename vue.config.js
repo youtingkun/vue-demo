@@ -8,7 +8,7 @@ const name = 'vue demo'; // page title
 module.exports = {
 	devServer: {
 		open: false,
-		before: require('./mock/mock-server.js'),
+		// before: require('./mock/mock-server.js'),
 		hot: true, //模块热替换
 		hotOnly: true, //只有热更新不会刷新页面
 	},
@@ -26,7 +26,10 @@ module.exports = {
 		// 设置@目录
 		config.resolve.alias.set('@', path.join(__dirname, 'src')).set('views', path.join(__dirname, 'src/views'));
 		// set svg-sprite-loader
-		config.module.rule('svg').exclude.add(resolve('src/icons')).end();
+		config.module
+			.rule('svg')
+			.exclude.add(resolve('src/icons'))
+			.end();
 		config.module
 			.rule('icons')
 			.test(/\.svg$/)

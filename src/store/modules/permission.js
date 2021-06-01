@@ -37,7 +37,7 @@ export function filterAsyncRoutes(routes, roles) {
 }
 
 const state = {
-	routes: [],
+	routes: constantRoutes,
 	addRoutes: [],
 };
 
