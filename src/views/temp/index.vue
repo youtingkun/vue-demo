@@ -6,7 +6,7 @@
 			<label><input type="checkbox" v-model="fullPage" />Full page?</label>
 			<button type="submit">Login</button>
 			<el-button @click="changeLang">切换语言</el-button>
-			{{ $t('hello') }}
+			{{ $t('hello') }} {{ a }}
 		</form>
 		<div>原数据：{{ aesData }}加密后的数据：{{ encryptData }}解密后的数据：{{ decryptData }}</div>
 		<el-button @click="encryptDataF">加密数据</el-button>
@@ -35,6 +35,7 @@ export default {
 			decryptData: '',
 			count: 0,
 			obj: {},
+			a: this.$t('hello'),
 		};
 	},
 	beforeCreate() {},
@@ -145,6 +146,7 @@ export default {
 		},
 		changeLang() {
 			this.$i18n.locale = this.$i18n.locale === 'zh' ? 'en' : 'zh';
+			console.log(this.$t('hello'));
 		},
 	},
 };

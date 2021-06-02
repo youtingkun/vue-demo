@@ -15,20 +15,18 @@ import '@/components/index';
 import '@/views/wheel/drag-demo/custom-component/index'; //注册画布的组件
 
 import i18n from './lang';
-
 // import VThrottle from 'v-throttle';
 
 // Vue.use(VThrottle);
 
 Vue.use(drectives);
 Vue.use(Loading);
-Vue.use(VueI18n);
-
-Vue.config.productionTip = false;
-Vue.prototype.$api = api;
 Vue.use(ElementUI, {
 	i18n: (key, value) => i18n.t(key, value),
 });
+
+Vue.config.productionTip = false;
+Vue.prototype.$api = api;
 
 new Vue({
 	i18n,
