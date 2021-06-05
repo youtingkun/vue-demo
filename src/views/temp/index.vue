@@ -1,6 +1,7 @@
 <template>
 	<div>
 		<div>{{ count }}obj:{{ obj.a }}</div>
+		<img src="http://ww1.sinaimg.cn/large/8112eb67ly1gr7gynhf76j21hc0l6gz2.jpg" />
 		<form @submit.prevent="submit" class="vld-parent" ref="formContainer">
 			<!-- your form inputs goes here-->
 			<label><input type="checkbox" v-model="fullPage" />Full page?</label>
