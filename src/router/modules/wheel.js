@@ -54,6 +54,14 @@ const wheel = {
 				title: 'static-demo',
 			},
 		},
+		{
+			path: 'rich-text',
+			component: () => import('@/views/wheel/rich-text'),
+			name: 'rich-text',
+			meta: {
+				title: '富文本编辑',
+			},
+		},
 	],
 };
 
