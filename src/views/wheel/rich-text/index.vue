@@ -12,6 +12,7 @@
 <script>
 // 引入 wangEditor
 import wangEditor from 'wangeditor';
+import OSS from 'ali-oss';
 
 export default {
 	data() {
@@ -27,6 +28,29 @@ export default {
 		editor.config.onchange = newHtml => {
 			this.editorData = newHtml;
 			document.getElementById('show').innerHTML = newHtml;
+		};
+		// 具体值需要去阿里云控制台获取
+		let client = new OSS({
+			// // region以杭州为例（oss-cn-hangzhou），其他region按实际情况填写。
+			region: 'oss-cn-shanghai',
+			// 阿里云主账号AccessKey拥有所有API的访问权限，风险很高。强烈建议您创建并使用RAM账号进行API访问或日常运维，请登录RAM控制台创建RAM账号。
+			accessKeyId: 'STS.NUvoss2wVssfsJ4R55FnxCStT',
+			accessKeySecret: 'BorpA7pFCipDDx8RZyxAp5PHTXj5ZeY9rPjqeZoV7bmV',
+			bucket: 'aliyun-wb-dd0l47k19m',
+		});
+
+		editor.config.customUploadImg = function (resultFiles, insertImgFn) {
+			// resultFiles 是 input 中选中的文件列表
+			// insertImgFn 是获取图片 url 后，插入到编辑器的方法
+			client
+				.put('image', resultFiles[0])
+				.then(function (res) {
+					// 上传图片，返回结果，将图片插入到编辑器中
+					insertImgFn(res.url);
+				})
+				.catch(function (err) {
+					console.log(err);
+				});
 		};
 
 		// 创建编辑器

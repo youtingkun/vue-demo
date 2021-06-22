@@ -26,10 +26,7 @@ module.exports = {
 		// 设置@目录
 		config.resolve.alias.set('@', path.join(__dirname, 'src')).set('views', path.join(__dirname, 'src/views'));
 		// set svg-sprite-loader
-		config.module
-			.rule('svg')
-			.exclude.add(resolve('src/icons'))
-			.end();
+		config.module.rule('svg').exclude.add(resolve('src/icons')).end();
 		config.module
 			.rule('icons')
 			.test(/\.svg$/)
