@@ -62,6 +62,14 @@ const wheel = {
 				title: '富文本编辑',
 			},
 		},
+		{
+			path: 'gallery',
+			component: () => import('@/views/wheel/gallery'),
+			name: 'wheel-gallery',
+			meta: {
+				title: '图片库',
+			},
+		},
 	],
 };
 
