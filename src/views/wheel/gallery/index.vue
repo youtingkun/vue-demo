@@ -55,7 +55,7 @@
 								<div>
 									<el-checkbox
 										v-model="dataList[index].isSelect"
-										@change="handleCheckboxChange"
+										@change="value => handleCheckboxChange(value, item)"
 										label="这是名称"
 									></el-checkbox>
 								</div>
@@ -108,19 +108,21 @@
 			:close-on-press-escape="false"
 			:show-close="false"
 		>
-			{{ this.successUploadFileLength }}{{ this.uploadFileLength }}
 			<el-progress
 				v-if="this.uploadFileLength != 0"
 				:percentage="(this.successUploadFileLength / this.uploadFileLength) * 100"
 			></el-progress>
 		</el-dialog>
+		<gallery-select ref="gallerySelect" @select="handleSelect"></gallery-select>
+		<el-button type="primary" @click="handleOpenGallerySelect">选择图片</el-button>
 	</div>
 </template>
 
 <script>
+import GallerySelect from './GallerySelect.vue';
 export default {
 	name: '',
-	components: {},
+	components: { GallerySelect },
 	props: {},
 	data() {
 		return {
@@ -130,6 +132,7 @@ export default {
 			dialogVisible: false,
 			searchForm: {
 				name: '',
+				groupId: '',
 				pageSize: 10,
 				pageNumber: 1,
 				total: 100,
@@ -163,6 +166,9 @@ export default {
 	computed: {},
 	watch: {},
 	methods: {
+		handleOpenGallerySelect() {
+			this.$refs['gallerySelect'].openDialog();
+		},
 		handelSearch() {
 			this.searchForm.pageSize = 10;
 			this.searchForm.pageNumber = 1;
@@ -242,20 +248,25 @@ export default {
 			this.rankDialogVisible = true;
 		},
 		handleRankCheckChange() {},
-		handleCheckboxChange() {
-			console.log('this.dataList', this.dataList);
+		handleCheckboxChange(value, item) {
+			this.selectList = this.dataList.filter(item => item.isSelect);
+			console.log('this.selectList', this.selectList);
 		},
 		handleAllSelect(value) {
 			if (value) {
-				this.dataList.map((item, index) => {
+				this.dataList.forEach((item, index) => {
 					this.dataList[index].isSelect = true;
 				});
+				this.handleCheckboxChange();
 			} else {
-				this.dataList.map((item, index) => {
+				this.dataList.forEach((item, index) => {
 					this.dataList[index].isSelect = false;
 				});
+				this.handleCheckboxChange();
 			}
-			console.log('this.dataList', this.dataList);
+		},
+		handleSelect(select) {
+			console.log(select);
 		},
 	},
 	created() {},
@@ -269,7 +280,7 @@ export default {
 	activated() {},
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .app-container {
 	background-color: #f4f4f9;
 }
@@ -345,9 +356,7 @@ export default {
 		}
 		.body {
 			margin-top: 25px;
-			.el-card__header {
-				background-color: #ccc;
-			}
+
 			.img-item-wrap {
 				display: flex;
 				flex-direction: row;

@@ -22,7 +22,7 @@
 
 <script>
 import crypto from '@/utils/crypto';
-import npmDemo from 'ytk-utils';
+import { getQueryString } from 'ytk-utils';
 import moment from 'moment';
 import { Game, GameObject, resource, RESOURCE_TYPE } from '@eva/eva.js';
 import { RendererSystem } from '@eva/plugin-renderer';
@@ -123,8 +123,9 @@ export default {
 			return parseInt(time / (24 * 60 * 60 * 1000));
 		},
 		testNpmPackage() {
-			const my = new npmDemo();
-			my.f1();
+			const my = getQueryString('a');
+			console.log(getQueryString);
+			console.log(my);
 		},
 		encryptDataF() {
 			this.encryptData = crypto.encrypt(JSON.stringify(this.aesData));
