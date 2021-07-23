@@ -7,8 +7,8 @@
 					<el-menu-item v-for="(item, i) in groupList" :key="item.id" :index="item.id" class="menu-item">
 						<div class="name">{{ `${item.name}(${item.number})` }}</div>
 						<div>
-							<i class="el-icon-edit-outline action" @click="handleEditGroupName(item.name, i)"> </i>
-							<i class="el-icon-delete action" @click="handleDeleteGroup(item)"></i>
+							<i class="el-icon-edit-outline action" @click.stop="handleEditGroupName(item.name, i)"> </i>
+							<i class="el-icon-delete action" @click.stop="handleDeleteGroup(item)"></i>
 						</div>
 					</el-menu-item>
 				</el-menu>
@@ -51,8 +51,12 @@
 						</div>
 						<div class="img-item-wrap" v-loading="dataListLoading">
 							<div class="img-item" v-for="(item, index) in dataList" :key="item.id">
-								<img class="img" src="www.baidu.com" />
-								<div>
+								<el-image
+									class="img"
+									src="www.baidu.com"
+									:preview-src-list="['www.baidu.com']"
+								></el-image>
+								<div class="name">
 									<el-checkbox
 										v-model="dataList[index].isSelect"
 										@change="value => handleCheckboxChange(value, item)"
@@ -363,9 +367,17 @@ export default {
 				flex-wrap: wrap;
 				.img-item {
 					margin: 12px;
-					img {
+					width: 135px;
+					height: 135px;
+					.img {
 						width: 135px;
 						height: 135px;
+						object-fit: contain;
+					}
+					.name {
+						overflow: hidden;
+						text-overflow: ellipsis;
+						white-space: nowrap;
 					}
 				}
 			}
