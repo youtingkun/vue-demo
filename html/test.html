@@ -1,30 +1,11 @@
-<!doctype html>
+<!DOCTYPE html>
 <body>
-<script>
-  function ready() {
-    console.log('DOM is ready');
-    // 图片目前尚未加载完成（除非已经被缓存），所以图片的大小为 0x0
-    console.log(`Image size: ${img.offsetWidth}x${img.offsetHeight}`);
-  }
-  document.addEventListener("DOMContentLoaded", ready);
-
-  window.onload = function() { // 与此相同 window.addEventListener('load', (event) => {
-    console.log('Page loaded');
-
-    // 此时图片已经加载完成
-    console.log(`Image size: ${img.offsetWidth}x${img.offsetHeight}`);
-  };
-  window.addEventListener("unload", function() {
-    console.log('Page is unload');
-  });
-
-
-  window.onbeforeunload = function() {
-    console.log('There are unsaved changes. Leave now?');
-    return false;
-  };
-
-</script>
-
-<img id="img" src="https://en.js.cx/clipart/train.gif?speed=1&cache=0">
+	<div id="parent">
+		<div id="child"></div>
+	</div>
+	<script>
+		const pEl = document.getElementById('parent');
+		const cEl = document.getElementById('child');
+		console.log(pEl.compareDocumentPosition(cEl)); // 20
+	</script>
 </body>
