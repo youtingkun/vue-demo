@@ -27,6 +27,7 @@ import moment from 'moment';
 import { Game, GameObject, resource, RESOURCE_TYPE } from '@eva/eva.js';
 import { RendererSystem } from '@eva/plugin-renderer';
 import { Img, ImgSystem } from '@eva/plugin-renderer-img';
+import { JSEncrypt } from 'jsencrypt';
 export default {
 	data() {
 		return {
@@ -54,6 +55,14 @@ export default {
 			),
 		);
 		this.evaRender();
+		let jse = new JSEncrypt();
+		jse.setPublicKey(
+			'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCRXYFYTGI9uVipfl9P5loLAWLRIQPpSznBc1ACIpCO/ptKYLXjzunWz2TyCj5OV1yjs9pEIcyOnxs6ESplsUOsEakf6wDgox6sU3A51mQmQlm6ALxtfguurZGOJ0Ksg/gL1q97YWTSMsH9R1slDV95nvMKsQAd4Yd/6i+2/ihaxQIDAQAB',
+		);
+		let passowrd = jse.decrypt(
+			'cKewlWY2fXWQGhRY3NwP+2TOXS/Q/0NtqQiQdMkNuI8=.3295fe5e3482e9f669ddb41ca99584f71c41787735fa0f056c361878e2f67eb9',
+		);
+		console.log('passowrd', passowrd);
 	},
 	methods: {
 		evaRender() {
