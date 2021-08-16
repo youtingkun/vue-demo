@@ -33,26 +33,30 @@ export default {
 		let client = new OSS({
 			// // region以杭州为例（oss-cn-hangzhou），其他region按实际情况填写。
 			region: 'oss-cn-shanghai',
-			// 阿里云主账号AccessKey拥有所有API的访问权限，风险很高。强烈建议您创建并使用RAM账号进行API访问或日常运维，请登录RAM控制台创建RAM账号。
-			accessKeyId: 'STS.NUvoss2wVssfsJ4R55FnxCStT',
-			accessKeySecret: 'BorpA7pFCipDDx8RZyxAp5PHTXj5ZeY9rPjqeZoV7bmV',
+			// 从STS服务获取的临时访问密钥（AccessKey ID和AccessKey Secret）。
+			accessKeyId: 'STS.NTbbrunJQLLVK4LztuhD4FToY',
+			accessKeySecret: '77afMWu4a55n1gvoWd18gmcdb9MVAjTJqdsd5P9XHujY',
+			// 填写Bucket名称。
 			bucket: 'aliyun-wb-dd0l47k19m',
+			// 从STS服务获取的安全令牌（SecurityToken）。
+			stsToken:
+				'CAIS8wF1q6Ft5B2yfSjIr5fXKcjBg5Vw+469SRL9nnQgZMsYqZHEuzz2IH5MeHNoAusXt/ozlW5W7/gZlqNJQppiXlf4YNBstka1FYV9JNivgde8yJBZor/HcDHhJnyW9cvWZPqDP7G5U/yxalfCuzZuyL/hD1uLVECkNpv74vwOLK5gPG+CYCFBGc1dKyZ7tcYeLgGxD/u2NQPwiWeiZygB+CgE0Dgit/Xuk53HsEaB1gSlktV4/dqhfsKWCOB3J4p6XtuP2+h7S7HMyiY46WIRqv8q1vQfomae4I3MXQcIvU6cUfDd99p0NxN0fbQqmVLKY2JRSZcagAFzqkHtNkw2KnGym+rZCti9f/u3iHIa/wxSAB128MlYV3OMhtqakAlK9rgYf1fDVkfH5uWwp2HznF2SHAETeMnmYIPspcPdN/U/tWUN9WPFc9X5lpxOllWWY7F8mrfiCr3A/qEIpru5YFUqry2emNcjt/NxSlXUnM5JviOUnMIWYg==',
 		});
 
 		editor.config.customUploadImg = function (resultFiles, insertImgFn) {
 			// resultFiles 是 input 中选中的文件列表
 			// insertImgFn 是获取图片 url 后，插入到编辑器的方法
 			client
-				.put('image', resultFiles[0])
+				.put('image.jpg', resultFiles[0])
 				.then(function (res) {
 					// 上传图片，返回结果，将图片插入到编辑器中
+					console.log(res);
 					insertImgFn(res.url);
 				})
 				.catch(function (err) {
 					console.log(err);
 				});
 		};
-
 		// 创建编辑器
 		editor.create();
 
