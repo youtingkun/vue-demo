@@ -23,6 +23,7 @@
 <script>
 import crypto from '@/utils/crypto';
 import npmDemo from 'ytk-utils';
+import { getQueryString } from '@youtingkun/utils';
 import moment from 'moment';
 import { Game, GameObject, resource, RESOURCE_TYPE } from '@eva/eva.js';
 import { RendererSystem } from '@eva/plugin-renderer';
@@ -42,6 +43,8 @@ export default {
 	beforeCreate() {},
 	beforeDestroy() {},
 	mounted() {
+		let q = getQueryString();
+		console.log(q);
 		let _this = this;
 		requestAnimationFrame(function () {
 			_this.count++;
@@ -159,5 +162,6 @@ export default {
 }
 .z-demo {
 	z-index: -1;
+	justify-content: space-between;
 }
 </style>
