@@ -1,22 +1,6 @@
 <template>
 	<div>
-		<div>{{ count }}obj:{{ obj.a }}</div>
-		<img src="http://ww1.sinaimg.cn/large/8112eb67ly1gr7gynhf76j21hc0l6gz2.jpg" />
-		<form @submit.prevent="submit" class="vld-parent" ref="formContainer">
-			<!-- your form inputs goes here-->
-			<label><input type="checkbox" v-model="fullPage" />Full page?</label>
-			<button type="submit">Login</button>
-			<el-button @click="changeLang">切换语言</el-button>
-			{{ $t('hello') }} {{ a }}
-		</form>
-		<div>原数据：{{ aesData }}加密后的数据：{{ encryptData }}解密后的数据：{{ decryptData }}</div>
-		<el-button @click="encryptDataF">加密数据</el-button>
-		<el-button @click="testNpmPackage">testMyNpm</el-button>
-		<lang-select></lang-select>
-		<div class="box">
-			<div class="z-demo">123</div>
-		</div>
-		<canvas id="canvas"></canvas>
+		<el-button @click="downloadByUrl('https://oss-aliyun.youtingkun.com/Stanbicbank.csv')">下载</el-button>
 	</div>
 </template>
 
@@ -28,6 +12,8 @@ import { Game, GameObject, resource, RESOURCE_TYPE } from '@eva/eva.js';
 import { RendererSystem } from '@eva/plugin-renderer';
 import { Img, ImgSystem } from '@eva/plugin-renderer-img';
 import { JSEncrypt } from 'jsencrypt';
+import qs from 'qs';
+
 export default {
 	data() {
 		return {
@@ -60,11 +46,28 @@ export default {
 			'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCRXYFYTGI9uVipfl9P5loLAWLRIQPpSznBc1ACIpCO/ptKYLXjzunWz2TyCj5OV1yjs9pEIcyOnxs6ESplsUOsEakf6wDgox6sU3A51mQmQlm6ALxtfguurZGOJ0Ksg/gL1q97YWTSMsH9R1slDV95nvMKsQAd4Yd/6i+2/ihaxQIDAQAB',
 		);
 		let passowrd = jse.decrypt(
-			'cKewlWY2fXWQGhRY3NwP+2TOXS/Q/0NtqQiQdMkNuI8=.3295fe5e3482e9f669ddb41ca99584f71c41787735fa0f056c361878e2f67eb9',
+			'KlTybo0Kpax/PMUhz5jkxlXu45VrYRr4mqo11jwiluE=.897b24ff5bfd0270b97818059a9a33d9dbd598890faf3d8178c8541d1ff26ba6',
 		);
 		console.log('passowrd', passowrd);
+		this.decodeParam();
 	},
 	methods: {
+		decodeParam() {
+			const searchUrl = window.location.search.split('?')[1] || window.location.hash.split('?')[1] || '';
+			let b = { name: 'you ting kun', sex: '1' };
+			console.log(qs.parse(searchUrl), searchUrl);
+			console.log(qs.stringify(b));
+		},
+		downloadByUrl(url) {
+			let fileName = url.substring(url.lastIndexOf('/') + 1, url.length);
+			let link = document.createElement('a');
+			link.style.display = 'none';
+			link.download = fileName;
+			link.href = url;
+			document.body.appendChild(link);
+			link.click();
+			document.body.removeChild(link);
+		},
 		evaRender() {
 			resource.addResource([
 				{
