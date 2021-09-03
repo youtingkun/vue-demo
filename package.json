@@ -14,6 +14,7 @@
 		"@eva/eva.js": "^1.0.4",
 		"@eva/plugin-renderer": "^1.0.4",
 		"@eva/plugin-renderer-img": "^1.0.4",
+		"@youtingkun/utils": "^1.0.34",
 		"ali-oss": "^6.15.2",
 		"axios": "^0.21.0",
 		"core-js": "^3.6.5",
