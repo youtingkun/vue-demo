@@ -6,7 +6,7 @@
 
 <script>
 import crypto from '@/utils/crypto';
-import { getQueryString } from 'ytk-utils';
+import { getQueryString } from '@youtingkun/utils';
 import moment from 'moment';
 import { Game, GameObject, resource, RESOURCE_TYPE } from '@eva/eva.js';
 import { RendererSystem } from '@eva/plugin-renderer';
