@@ -20,6 +20,7 @@
 		"core-js": "^3.6.5",
 		"crypto-js": "^4.0.0",
 		"dat.gui": "^0.7.7",
+		"dayjs": "^1.10.7",
 		"element-china-area-data": "^5.0.1",
 		"element-ui": "^2.13.2",
 		"eslint-plugin-html": "^6.1.1",

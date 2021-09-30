@@ -7,12 +7,14 @@
 <script>
 import crypto from '@/utils/crypto';
 import { getQueryString } from '@youtingkun/utils';
-import moment from 'moment';
+
 import { Game, GameObject, resource, RESOURCE_TYPE } from '@eva/eva.js';
 import { RendererSystem } from '@eva/plugin-renderer';
 import { Img, ImgSystem } from '@eva/plugin-renderer-img';
 import { JSEncrypt } from 'jsencrypt';
 import qs from 'qs';
+import dayjs from 'dayjs';
+import moment from 'moment';
 
 export default {
 	data() {
@@ -29,6 +31,8 @@ export default {
 	beforeCreate() {},
 	beforeDestroy() {},
 	mounted() {
+		moment();
+		dayjs();
 		let q = getQueryString();
 		console.log(q);
 		let _this = this;
