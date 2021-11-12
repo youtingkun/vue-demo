@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import App from './App.vue';
 import ElementUI from 'element-ui';
+import ytkVueComponents from '@youtingkun/vue-element-components';
 import 'element-ui/lib/theme-chalk/index.css';
 import router from './router';
 import store from './store';
@@ -24,7 +25,7 @@ Vue.use(Loading);
 Vue.use(ElementUI, {
 	i18n: (key, value) => i18n.t(key, value),
 });
-
+Vue.use(ytkVueComponents);
 Vue.config.productionTip = false;
 Vue.prototype.$api = api;
 

@@ -1,5 +1,6 @@
 <template>
 	<div>
+		<ytk-button></ytk-button>
 		<el-button @click="downloadByUrl('https://oss-aliyun.youtingkun.com/Stanbicbank.csv')">下载</el-button>
 	</div>
 </template>
