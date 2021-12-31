@@ -35,7 +35,7 @@ export default {
 		moment();
 		dayjs();
 		let q = getQueryString();
-		console.log(q);
+		// console.log(q);
 		let _this = this;
 		requestAnimationFrame(function () {
 			_this.count++;
