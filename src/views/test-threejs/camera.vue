@@ -87,8 +87,10 @@ export default {
 
 			// 添加场景
 			const scene = new THREE.Scene();
-			scene.background = new THREE.Color('black');
+			scene.background = new THREE.Color(0xff0000);
 			scene.add(cameraHelper);
+			const axesHelper = new THREE.AxesHelper(150);
+			scene.add(axesHelper);
 
 			// 添加棋盘网格
 			{
@@ -184,7 +186,6 @@ export default {
 				// return the aspect
 				return width / height;
 			}
-
 			function render() {
 				resizeRendererToDisplaySize(renderer);
 

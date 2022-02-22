@@ -80,12 +80,14 @@ export default {
 				mtlLoader.load(
 					'https://threejsfundamentals.org/threejs/resources/models/windmill/windmill.mtl',
 					mtl => {
-						mtl.preload();
+						console.log('mtl', mtl);
+						// mtl.preload();
 						const objLoader = new OBJLoader();
 						objLoader.setMaterials(mtl);
 						objLoader.load(
 							'https://threejsfundamentals.org/threejs/resources/models/windmill/windmill.obj',
 							root => {
+								root.position.set(0, 3, 0);
 								scene.add(root);
 							},
 						);

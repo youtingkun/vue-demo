@@ -31,8 +31,11 @@ export default {
 			controls.update();
 
 			const scene = new THREE.Scene();
+			const axesHelper = new THREE.AxesHelper(150);
+			scene.add(axesHelper);
 			scene.background = new THREE.Color('black');
 
+			// 添加网格
 			{
 				const planeSize = 40;
 
@@ -53,6 +56,7 @@ export default {
 				mesh.rotation.x = Math.PI * -0.5;
 				scene.add(mesh);
 			}
+			// 添加正方体
 			{
 				const cubeSize = 4;
 				const cubeGeo = new THREE.BoxBufferGeometry(cubeSize, cubeSize, cubeSize);
@@ -61,6 +65,7 @@ export default {
 				mesh.position.set(cubeSize + 1, cubeSize / 2, 0);
 				scene.add(mesh);
 			}
+			// 添加球体
 			{
 				const sphereRadius = 3;
 				const sphereWidthDivisions = 32;
@@ -98,15 +103,15 @@ export default {
 			// gui.addColor(new ColorGUIHelper(light, 'color'), 'value').name('color');
 			// gui.add(light, 'intensity', 0, 2, 0.01);
 			// 场景光
-			// const skyColor = 0xb1e1ff; // light blue
-			// const groundColor = 0xb97a20; // brownish orange
-			// const intensity = 1;
-			// const light = new THREE.HemisphereLight(skyColor, groundColor, intensity);
-			// scene.add(light);
-			// const gui = new GUI();
-			// gui.addColor(new ColorGUIHelper(light, 'color'), 'value').name('skyColor');
-			// gui.addColor(new ColorGUIHelper(light, 'groundColor'), 'value').name('groundColor');
-			// gui.add(light, 'intensity', 0, 2, 0.01);
+			const skyColor = 0xb1e1ff; // light blue
+			const groundColor = 0xb97a20; // brownish orange
+			const intensity = 1;
+			const light = new THREE.HemisphereLight(skyColor, groundColor, intensity);
+			scene.add(light);
+			const gui = new GUI();
+			gui.addColor(new ColorGUIHelper(light, 'color'), 'value').name('skyColor');
+			gui.addColor(new ColorGUIHelper(light, 'groundColor'), 'value').name('groundColor');
+			gui.add(light, 'intensity', 0, 2, 0.01);
 			// 方向光
 			// function makeXYZGUI(gui, vector3, name, onChangeFn) {
 			// 	const folder = gui.addFolder(name);
@@ -207,18 +212,18 @@ export default {
 			// }
 
 			// 矩形区域光
-			class DegRadHelper {
-				constructor(obj, prop) {
-					this.obj = obj;
-					this.prop = prop;
-				}
-				get value() {
-					return THREE.MathUtils.radToDeg(this.obj[this.prop]);
-				}
-				set value(v) {
-					this.obj[this.prop] = THREE.MathUtils.degToRad(v);
-				}
-			}
+			// class DegRadHelper {
+			// 	constructor(obj, prop) {
+			// 		this.obj = obj;
+			// 		this.prop = prop;
+			// 	}
+			// 	get value() {
+			// 		return THREE.MathUtils.radToDeg(this.obj[this.prop]);
+			// 	}
+			// 	set value(v) {
+			// 		this.obj[this.prop] = THREE.MathUtils.degToRad(v);
+			// 	}
+			// }
 
 			function makeXYZGUI(gui, vector3, name, onChangeFn) {
 				const folder = gui.addFolder(name);
@@ -250,15 +255,15 @@ export default {
 				gui.add(light, 'intensity', 0, 10, 0.01);
 				gui.add(light, 'width', 0, 20).onChange(updateLight);
 				gui.add(light, 'height', 0, 20).onChange(updateLight);
-				gui.add(new DegRadHelper(light.rotation, 'x'), 'value', -180, 180)
-					.name('x rotation')
-					.onChange(updateLight);
-				gui.add(new DegRadHelper(light.rotation, 'y'), 'value', -180, 180)
-					.name('y rotation')
-					.onChange(updateLight);
-				gui.add(new DegRadHelper(light.rotation, 'z'), 'value', -180, 180)
-					.name('z rotation')
-					.onChange(updateLight);
+				// gui.add(new DegRadHelper(light.rotation, 'x'), 'value', -180, 180)
+				// 	.name('x rotation')
+				// 	.onChange(updateLight);
+				// gui.add(new DegRadHelper(light.rotation, 'y'), 'value', -180, 180)
+				// 	.name('y rotation')
+				// 	.onChange(updateLight);
+				// gui.add(new DegRadHelper(light.rotation, 'z'), 'value', -180, 180)
+				// 	.name('z rotation')
+				// 	.onChange(updateLight);
 
 				makeXYZGUI(gui, light.position, 'position', updateLight);
 			}
