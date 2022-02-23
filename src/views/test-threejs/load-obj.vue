@@ -75,19 +75,19 @@ export default {
 				scene.add(light.target);
 			}
 
+			const objects = [];
+			const sunOrbit = new THREE.Object3D();
 			{
 				const mtlLoader = new MTLLoader();
 				mtlLoader.load(
 					'https://threejsfundamentals.org/threejs/resources/models/windmill/windmill.mtl',
 					mtl => {
 						console.log('mtl', mtl);
-						// mtl.preload();
 						const objLoader = new OBJLoader();
 						objLoader.setMaterials(mtl);
 						objLoader.load(
 							'https://threejsfundamentals.org/threejs/resources/models/windmill/windmill.obj',
 							root => {
-								root.position.set(0, 3, 0);
 								scene.add(root);
 							},
 						);
@@ -106,12 +106,16 @@ export default {
 				return needResize;
 			}
 
-			function render() {
+			function render(time) {
 				if (resizeRendererToDisplaySize(renderer)) {
 					const canvas = renderer.domElement;
 					camera.aspect = canvas.clientWidth / canvas.clientHeight;
 					camera.updateProjectionMatrix();
 				}
+				time *= 0.0003;
+				objects.forEach(obj => {
+					obj.rotation.y = time;
+				});
 
 				renderer.render(scene, camera);
 
