@@ -1,5 +1,6 @@
 <template>
 	<div>
+		{{ temporal }}
 		<ytk-button></ytk-button>
 		<el-button @click="downloadByUrl('https://oss-aliyun.youtingkun.com/Stanbicbank.csv')">下载</el-button>
 	</div>
@@ -14,12 +15,13 @@ import { RendererSystem } from '@eva/plugin-renderer';
 import { Img, ImgSystem } from '@eva/plugin-renderer-img';
 import { JSEncrypt } from 'jsencrypt';
 import qs from 'qs';
-import dayjs from 'dayjs';
 import moment from 'moment';
+import { Temporal } from '@js-temporal/polyfill';
 
 export default {
 	data() {
 		return {
+			temporal: '',
 			fullPage: false,
 			aesData: { a: 1, b: 2 },
 			encryptData: '',
@@ -32,8 +34,7 @@ export default {
 	beforeCreate() {},
 	beforeDestroy() {},
 	mounted() {
-		moment();
-		dayjs();
+		this.temporal = new Temporal.ZonedDateTime(0n, 'Asia/Shanghai', 'chinese');
 		let q = getQueryString();
 		// console.log(q);
 		let _this = this;
