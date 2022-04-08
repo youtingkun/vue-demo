@@ -15,6 +15,7 @@
 		"@eva/plugin-renderer": "^1.0.4",
 		"@eva/plugin-renderer-img": "^1.0.4",
 		"@js-temporal/polyfill": "^0.4.0",
+		"@youtingkun/http": "^1.1.1",
 		"@youtingkun/utils": "^2.0.8",
 		"@youtingkun/vue-element-components": "^1.0.0",
 		"ali-oss": "^6.15.2",

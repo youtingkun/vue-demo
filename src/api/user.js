@@ -1,4 +1,9 @@
 import request from '@/utils/request';
+import http from '@youtingkun/http';
+
+export function test() {
+	return http();
+}
 
 export function login(data) {
 	return request({
