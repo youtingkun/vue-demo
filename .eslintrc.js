@@ -5,8 +5,13 @@ module.exports = {
 	},
 	extends: ['plugin:vue/essential', 'plugin:prettier/recommended'],
 	rules: {
-		'prettier/prettier': 'error',
 		'vue/no-unused-components': 'off',
+		'prettier/prettier': [
+			'error',
+			{
+				endOfLine: 'auto',
+			},
+		],
 	},
 	parserOptions: {
 		parser: 'babel-eslint',

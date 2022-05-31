@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import ytkUtils from 'ytk-utils';
+import ytkUtils from '@youtingkun/utils';
 
 export default {
 	name: 'formPage',
